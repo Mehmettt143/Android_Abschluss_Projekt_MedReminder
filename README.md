@@ -38,9 +38,10 @@
 	- theme/  # color,Theme und Type
 	- viewmodel/    # ViewModels
  	- AppStart
+- utils/  # Helperclasses
 - MainActivity.kt
 
-  ### MVVM Architektur mit Repository Pattern
+ 	### 		MVVM Architektur 
   
   
   <img width="500" height="1000" alt="ArchitekturDiagramm" src="https://github.com/user-attachments/assets/28944942-ce10-486b-bf76-c2c6bfb0f870" />
