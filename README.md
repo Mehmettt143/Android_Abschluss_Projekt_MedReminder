@@ -1,4 +1,5 @@
-# MedReminder
+#  <ins>MedReminder<img width="68" height="69" alt="drugs (1)" src="https://github.com/user-attachments/assets/5e476506-649e-4e15-9164-0da04159b2b6" />
+
 
 - Einfache **Medikamentenverwaltung mit Erinnerungsfunktion**.
 - MedReminder ist eine Android-App zur **Medikamentensuche**.
