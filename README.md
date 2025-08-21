@@ -1,6 +1,4 @@
-#  <ins>MedReminder 
-
-<img width="144" height="144" alt="logo1" src="https://github.com/user-attachments/assets/ab300660-8b3e-4367-be08-9e82c520d26d" />
+#  <ins>MedReminder    <img width="64" height="64" alt="logo1" src="https://github.com/user-attachments/assets/ab300660-8b3e-4367-be08-9e82c520d26d" />
 
 
 - Einfache **Medikamentenverwaltung mit Erinnerungsfunktion**.
