@@ -1,9 +1,16 @@
 ## MedReminder <img width="64" height="64" alt="logo1" src="https://github.com/user-attachments/assets/ab300660-8b3e-4367-be08-9e82c520d26d" />
 
-- 📋 Einfache **Medikamentenverwaltung mit Erinnerungsfunktion**.
-- 📱 MedReminder ist eine Android-App zur **Medikamentensuche**.
-- 🔍 Nutzer können **Medikamente suchen, zu Favoriten hinzufügen und Einnahme-Erinnerungen erstellen**.
-- 👥 Die App richtet sich an alle, die ihre Medikamenteneinnahme organisieren möchten und dabei auf offizielle **FDA-Informationen** zugreifen wollen.
+Eine Android-App zur Medikamentenverwaltung mit intelligenter Erinnerungsfunktion.
+
+📱 Was ist MedReminder?
+MedReminder hilft Nutzern dabei, ihre Medikamenteneinnahme zu organisieren und nie wieder eine Dosis zu vergessen. Die App bietet Zugriff auf offizielle FDA-Datenbanken und ermöglicht eine sichere, lokale Verwaltung persönlicher Medikationspläne.
+
+## Zielgruppe
+
+Patienten mit regelmäßiger Medikation
+Senioren, die Unterstützung bei der Medikamentenorganisation benötigen
+Pflegepersonal und Angehörige
+Alle, die ihre Gesundheit proaktiv verwalten möchten
 
 ## 🎨 Design
 - folgt noch... 
