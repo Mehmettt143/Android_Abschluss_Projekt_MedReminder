@@ -9,8 +9,7 @@ MedReminder hilft Nutzern dabei, ihre Medikamenteneinnahme zu organisieren und n
 
 Patienten mit regelmäßiger Medikation
 Senioren, die Unterstützung bei der Medikamentenorganisation benötigen
-Pflegepersonal und Angehörige
-Alle, die ihre Gesundheit proaktiv verwalten möchten
+Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 
 ## 🎨 Design
 - folgt noch... 
