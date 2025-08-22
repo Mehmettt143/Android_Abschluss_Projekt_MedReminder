@@ -15,8 +15,8 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 - folgt noch... 
 
 ### 📱 Screens:
-- [ ] 🔍 DrugsSearchScreen
-- [ ] ⭐ FavoriteDrugsScreen (Favoriten)
+- [ ] 🔍 DrugSearchScreen
+- [ ] ⭐ FavoriteDrugScreen (Favoriten)
 - [ ] ⚙️ SettingNotificationScreen
 
 ### ✨ Features
