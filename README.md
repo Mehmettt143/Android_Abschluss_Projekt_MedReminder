@@ -67,9 +67,12 @@ MainActivity.kt
 
 - **🎨 Jetpack Compose** (UI)
 - **💾 Room** (lokale Datenbank)
+- **🔄 Moshi** (JSON Converter - API Daten in Kotlin Objects)
 - **🌐 Retrofit** (API Calls)
 - **🔧 Dependency Injection**
 - **🔔 Notification** (Benachrichtigung)
+
+
 
 ## 🚀 Ausblick
 
