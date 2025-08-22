@@ -42,7 +42,7 @@
  	### 		MVVM Architektur 
   
   
-  <img width="500" height="1000" alt="ArchitekturDiagramm" src="https://github.com/user-attachments/assets/28944942-ce10-486b-bf76-c2c6bfb0f870" />
+  <img width="280" height="580" alt="ArchitekturDiagramm" src="https://github.com/user-attachments/assets/28944942-ce10-486b-bf76-c2c6bfb0f870" />
 
 
 
@@ -51,6 +51,7 @@
 - Speichert Favoriten und Erinnerungen lokal für offline-Nutzung.
 
 ## API Calls
+## Webseiete für die OpenFDA : https://open.fda.gov/apis/
 - OpenFDA Drug Labeling API:
 - URL: https://api.fda.gov/drug/label.json
 - Kostenlos, ohne API-Key
@@ -61,7 +62,8 @@
 - Room (lokale Datenbank)
 - Retrofit (API Calls)
 - Dependency Injection
-- WorkManager(Erinnerungen)
+- Notification(Benachrichtigung)
 
 ## Ausblick
-- [ ] die Medikamenteninformationen sind auf Englischer Sprache könnte eventuell auf Deutsch übersetzt werden mit Hilfe einer API 
+- [ ] die Medikamenteninformationen sind auf Englischer Sprache könnte eventuell auf Deutsch übersetzt werden mit Hilfe einer API
+- [ ] die Favoritenliste oder auch Medikationen könnten als Pdf in Whatsapp-Kontakte geschickt werden. 
