@@ -23,7 +23,7 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 - [ ] 🔍 Medikamentensuche über FDA-Datenbank
 - [ ] ⭐ Medikamente zu Favoriten hinzufügen
 - [ ] ⏰ Einnahme-Erinnerungen erstellen
-- [ ] 📱 Push-Benachrichtigungen
+
 
 ## 🛠️ Technischer Aufbau
 
