@@ -2,7 +2,7 @@
 
 Eine Android-App zur Medikamentenverwaltung mit intelligenter Erinnerungsfunktion.
 
-📱 Was ist MedReminder?
+Was ist MedReminder?
 MedReminder hilft Nutzern dabei, ihre Medikamenteneinnahme zu organisieren und nie wieder eine Dosis zu vergessen. Die App bietet Zugriff auf offizielle FDA-Datenbanken und ermöglicht eine sichere, lokale Verwaltung persönlicher Medikationspläne.
 
 ## Zielgruppe
@@ -15,37 +15,37 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 - folgt noch... 
 
 ### 📱 Screens:
-- [ ] 🔍 DrugSearchScreen
-- [ ] ⭐ FavoriteDrugScreen (Favoriten)
-- [ ] ⚙️ SettingNotificationScreen
+- [ ]  DrugSearchScreen
+- [ ]  FavoriteDrugScreen (Favoriten)
+- [ ]  SettingNotificationScreen
 
 ### ✨ Features
-- [ ] 🔍 Medikamentensuche über FDA-Datenbank
-- [ ] ⭐ Medikamente zu Favoriten hinzufügen
-- [ ] ⏰ Einnahme-Erinnerungen erstellen
+- [ ]  Medikamentensuche über FDA-Datenbank
+- [ ]  Medikamente zu Favoriten hinzufügen
+- [ ]  Einnahme-Erinnerungen erstellen
 
 
 ## 🛠️ Technischer Aufbau
 
-### 🏗️ MVVM Architektur 
+###    MVVM Architektur 
 
-<img width="280" height="580" alt="ArchitekturDiagramm" src="https://github.com/user-attachments/assets/28944942-ce10-486b-bf76-c2c6bfb0f870" />
+<img width="250" height="550" alt="ArchitekturDiagramm" src="https://github.com/user-attachments/assets/28944942-ce10-486b-bf76-c2c6bfb0f870" />
 
 ### 📁 Ordnerstruktur
 ```
 data/
-├── local/        # 💾 Room Database
-├── remote/       # 🌐 OpenFDA API
-└── repository/   # 📦 Repository Implementation
-di/               # 🔧 Dependency Injection
-navigation/       # 🧭 Navigation
+   local/        #  Room Database
+   remote/       #  OpenFDA API
+   repository/   #  Repository Implementation
+di/              #  Dependency Injection
+navigation/      #  Navigation
 ui/
-├── components/   # 🧩 Fertige Components zur Benutzung in den Screens
-├── screens/      # 📱 Compose Screens
-├── theme/        # 🎨 Color, Theme und Type
-├── viewmodel/    # 🎯 ViewModels
-└── AppStart
-utils/            # 🔨 Helperclasses
+   components/   #  Fertige Components zur Benutzung in den Screens
+   screens/      #  Compose Screens
+   theme/        #  Color, Theme und Type
+   viewmodel/    #  ViewModels
+   AppStart
+utils/           #  Helperclasses
 MainActivity.kt
 ```
 
@@ -58,23 +58,23 @@ MainActivity.kt
 
 **Website für die OpenFDA**: https://open.fda.gov/apis/
 
-- **🔗 OpenFDA Drug Labeling API**:
-- **📍 URL**: `https://api.fda.gov/drug/label.json`
-- **💰 Kostenlos**, ohne API-Key
-- **🔍 Suche nach**: Markenname, Wirkstoff, Hersteller
+- ** OpenFDA Drug Labeling API**:
+- ** URL**: `https://api.fda.gov/drug/label.json`
+- ** Kostenlos**, ohne API-Key
+- ** Suche nach**: Markenname, Wirkstoff, Hersteller
    
 ## 📚 3rd-Party Frameworks
 
-- **🎨 Jetpack Compose** (UI)
-- **💾 Room** (lokale Datenbank)
-- **🔄 Moshi** (JSON Converter - API Daten in Kotlin Objects)
-- **🌐 Retrofit** (API Calls)
-- **🔧 Dependency Injection**
-- **🔔 Notification** (Benachrichtigung)
+- ** Jetpack Compose** (UI)
+- ** Room** (lokale Datenbank)
+- ** Moshi** (JSON Converter - API Daten in Kotlin Objects)
+- ** Retrofit** (API Calls)
+- ** Dependency Injection**
+- ** Notification** (Benachrichtigung)
 
 
 
 ## 🚀 Ausblick
 
-- [ ] 🌍 Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf Deutsch übersetzt werden mit Hilfe einer API
-- [ ] 📄 Die Favoritenliste oder auch Medikationen könnten als PDF an WhatsApp-Kontakte geschickt werden
+- [ ]  Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf Deutsch übersetzt werden mit Hilfe einer API
+- [ ]  Die Favoritenliste oder auch Medikationen könnten als PDF an WhatsApp-Kontakte geschickt werden
