@@ -11,21 +11,21 @@ Patienten mit regelmäßiger Medikation
 Senioren, die Unterstützung bei der Medikamentenorganisation benötigen
 Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 
-## 🎨 Design
+## Design
 - folgt noch... 
 
-### 📱 Screens:
+###  Screens:
 - [ ]  DrugSearchScreen
 - [ ]  FavoriteDrugScreen (Favoriten)
 - [ ]  SettingNotificationScreen
 
-### ✨ Features
+###  Features
 - [ ]  Medikamentensuche über FDA-Datenbank
 - [ ]  Medikamente zu Favoriten hinzufügen
 - [ ]  Einnahme-Erinnerungen erstellen
 
 
-## 🛠️ Technischer Aufbau
+##  Technischer Aufbau
 
 ###    MVVM Architektur 
 
@@ -51,26 +51,26 @@ MainActivity.kt
 
 ## 💾 Datenspeicherung
 
-### 🗄️ Room Database:
+### Room Database:
 - Speichert Favoriten und Erinnerungen lokal für Offline-Nutzung.
 
 ## 🌐 API Calls
 
 **Website für die OpenFDA**: https://open.fda.gov/apis/
 
-- ** OpenFDA Drug Labeling API**:
-- ** URL**: `https://api.fda.gov/drug/label.json`
-- ** Kostenlos**, ohne API-Key
-- ** Suche nach**: Markenname, Wirkstoff, Hersteller
+-  OpenFDA Drug Labeling API:
+-  URL: `https://api.fda.gov/drug/label.json`
+-  Kostenlos, ohne API-Key
+-  Suche nach: Markenname, Wirkstoff, Hersteller
    
 ## 📚 3rd-Party Frameworks
 
-- ** Jetpack Compose** (UI)
-- ** Room** (lokale Datenbank)
-- ** Moshi** (JSON Converter - API Daten in Kotlin Objects)
-- ** Retrofit** (API Calls)
-- ** Dependency Injection**
-- ** Notification** (Benachrichtigung)
+-  Jetpack Compose (UI)
+-  Room (lokale Datenbank)
+-  Moshi (JSON Converter - API Daten in Kotlin Objects)
+-  Retrofit (API Calls)
+-  Dependency Injection
+-  Notification** (Benachrichtigung)
 
 
 
