@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">MedReminder</string>
+    <string name="app_name" translatable="false">MedReminder</string>
+    <string name="tab_label_home">Home</string>
+    <string name="tab_label_favorite">Favorites</string>
+    <string name="tab_label_add_medicament">Add</string>
+    <string name="tab_label_setting">Settings</string>
+
+    ##Auth
+    <string name="tab_label_auth_text">Your Health.Your control</string>
+    <string name="tab_label_auth_welcome_text">Welcome back!</string>
+
+    ##AuthLogin
+    <string name="tab_label_auth_info">Sign in to your account.</string>
+    <string name="tab_label_auth_login">Already have an Account? Login</string>
+    <string name="tab_label_auth_register">Need an Account? Register</string>
+
+    ##AuthInfo
+    <string name="info_title">What to Expect:</string>
+    <string name="info_item_search_medications">Search and save medications</string>
+    <string name="info_item_reminders">Reminders for intake times</string>
+    <string name="info_item_manage_favorites">Manage your favorites</string>
+    <string name="info_item_medication_list">Medication list</string>
+
+
 </resources>

@@ -1,18 +1,105 @@
 package com.example.medreminder.ui
- 
+
+import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.medreminder.navigation.AddScreenRoute
+import com.example.medreminder.navigation.FavoriteScreenRoute
+import com.example.medreminder.navigation.HomeScreenRoute
+import com.example.medreminder.navigation.NavigationItem
+import com.example.medreminder.navigation.SettingsScreenRoute
+import com.example.medreminder.ui.screen.AddScreen
+import com.example.medreminder.ui.screen.AuthScreen
+import com.example.medreminder.ui.screen.FavoriteScreen
+import com.example.medreminder.ui.screen.HomeScreen
+import com.example.medreminder.ui.screen.SettingsScreen
+import com.example.medreminder.ui.viewmodel.AuthViewModel
 
-@Composable fun AppStart(
-    modifier: Modifier = Modifier
-) {
 
-}
-
-@Preview(showBackground = true)
+@SuppressLint("ResourceAsColor")
 @Composable
-private fun AppStartPreview() {
-    // Use Theme here
-    AppStart()
+fun AppStart(
+    authViewModel: AuthViewModel = viewModel()
+) {
+    val navController = rememberNavController()
+    var selectedTabItem by remember { mutableStateOf(NavigationItem.Home) }
+
+    val isLoggedIn by authViewModel.isLoggedIn.collectAsState()
+
+    if (!isLoggedIn) {
+        AuthScreen()
+    } else {
+        Scaffold(
+            bottomBar = {
+                NavigationBar(
+                    containerColor = Color(0xff0000fe),
+                ) {
+                    NavigationItem.entries.forEach { tabItem ->
+                        NavigationBarItem(
+                            selected = tabItem == selectedTabItem,
+                            onClick = {
+                                selectedTabItem = tabItem
+                            },
+                            icon = {
+                                Icon(
+                                    painter = painterResource(tabItem.icon),
+                                    contentDescription = stringResource(tabItem.label),
+                                    modifier = Modifier,
+                                    tint = Color.Unspecified // Keep icon color unchanged
+                                )
+                            },
+                            label = {
+                                Text(stringResource(tabItem.label))
+                            },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedTextColor = Color.White,
+                                unselectedTextColor = Color.White,
+                                selectedIconColor = Color.White,
+
+
+                                )
+                        )
+                    }
+                }
+            }
+        ) { paddingValues ->
+            NavHost(
+                navController = navController,
+                startDestination = selectedTabItem.route,
+                modifier = Modifier.padding(paddingValues)
+            ) {
+                composable<HomeScreenRoute> {
+                    HomeScreen()
+                }
+                composable<FavoriteScreenRoute> {
+                    FavoriteScreen()
+                }
+                composable<AddScreenRoute> {
+                    AddScreen()
+                }
+                composable<SettingsScreenRoute> {
+                    SettingsScreen()
+                }
+            }
+        }
+    }
 }

@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name" translatable="false">MedReminder</string>
+    <string name="tab_label_home">Startseite</string>
+    <string name="tab_label_favorite">Favoriten</string>
+    <string name="tab_label_add_medicament">hinzufügen</string>
+    <string name="tab_label_setting">Einstellungen</string>
+
+    //Auth
+    <string name="tab_label_auth_text">Ihre Gesundheit.Ihre Kontrolle</string>
+    <string name="tab_label_auth_welcome_text">Willkommen zurück!</string>
+
+    //AuthLogin
+    <string name="tab_label_auth_info">Melden Sie sich in Ihrem Konto an</string>
+    <string name="tab_label_auth_login">Haben Sie bereits ein Konto? Anmelden?</string>
+    <string name="tab_label_auth_register">Benötigen Sie ein Konto? Registrieren Sie sich</string>
+
+    //AuthInfo
+    <string name="info_title">Was Sie erwartet:</string>
+    <string name="info_item_search_medications">Medikamente suchen und speichern</string>
+    <string name="info_item_reminders">Erinnerungen für Einnahmezeiten</string>
+    <string name="info_item_manage_favorites">Ihre Favoriten verwalten</string>
+    <string name="info_item_medication_list">Medikamentenliste</string>
+</resources>
