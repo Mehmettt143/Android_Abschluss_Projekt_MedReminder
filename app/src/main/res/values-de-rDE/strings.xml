@@ -12,6 +12,8 @@
     //AuthLogin
     <string name="tab_label_auth_info">Melden Sie sich in Ihrem Konto an</string>
     <string name="tab_label_auth_login">Haben Sie bereits ein Konto? Anmelden?</string>
+    <string name="tab_label_auth_button_login">anmelden</string>
+    <string name="tab_label_auth_button_register">registrieren</string>
     <string name="tab_label_auth_register">Benötigen Sie ein Konto? Registrieren Sie sich</string>
 
     //AuthInfo

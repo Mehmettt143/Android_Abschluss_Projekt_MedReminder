@@ -12,6 +12,8 @@
     ##AuthLogin
     <string name="tab_label_auth_info">Sign in to your account.</string>
     <string name="tab_label_auth_login">Already have an Account? Login</string>
+    <string name="tab_label_auth_button_login">login</string>
+    <string name="tab_label_auth_button_register">register</string>
     <string name="tab_label_auth_register">Need an Account? Register</string>
 
     ##AuthInfo

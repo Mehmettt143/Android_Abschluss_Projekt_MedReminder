@@ -123,15 +123,22 @@ fun AuthScreen(
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(Color(0xFF0000FE))
             ) {
-                Text(if (showRegister) "Register" else "Login")
+                Text(
+                    if (showRegister) stringResource(R.string.tab_label_auth_button_register) else stringResource(
+                        R.string.tab_label_auth_button_login
+                    ), fontSize = 18.sp
+                )
             }
 
             TextButton(
                 onClick = { authViewModel.toggleShowRegister() }
             ) {
                 Text(
-                    if (showRegister) stringResource(R.string.tab_label_auth_login) else "Need an Account ? Register",
-                    color = Color.Blue
+                    if (showRegister) stringResource(R.string.tab_label_auth_login) else stringResource(
+                        R.string.tab_label_auth_register
+                    ),
+                    color = Color.Blue,
+                    fontSize = 16.sp
                 )
             }
         }
