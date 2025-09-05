@@ -1,4 +1,4 @@
-package com.example.medreminder.ui.component
+package com.example.medreminder.ui.component.auth
 
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons

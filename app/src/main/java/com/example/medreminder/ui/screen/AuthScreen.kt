@@ -29,12 +29,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.medreminder.R
-import com.example.medreminder.ui.component.AuthLogoCard
-
-import com.example.medreminder.ui.component.EmailTextField
-import com.example.medreminder.ui.component.AuthInfoText
-import com.example.medreminder.ui.component.PasswordTextField
-import com.example.medreminder.ui.component.UsernameTextField
+import com.example.medreminder.ui.component.auth.AuthLogoCard
+import com.example.medreminder.ui.component.auth.EmailTextField
+import com.example.medreminder.ui.component.auth.AuthInfoText
+import com.example.medreminder.ui.component.auth.PasswordTextField
+import com.example.medreminder.ui.component.auth.UsernameTextField
+import com.example.medreminder.ui.theme.InfoTextColor
+import com.example.medreminder.ui.theme.InfoTextTitleColor
 import com.example.medreminder.ui.viewmodel.AuthViewModel
 
 
@@ -159,29 +160,28 @@ fun AuthScreen(
                 Text(
                     text = stringResource(R.string.info_title),
                     fontSize = 18.sp,
-                    color = Color(0xFF1565C0)
+                    color = InfoTextTitleColor
                 )
                 AuthInfoText(
                     stringResource(R.string.info_item_search_medications),
                     16,
-                    Color(0xFF424242)
+                    InfoTextColor
                 )
                 AuthInfoText(stringResource(R.string.info_item_reminders), 16, Color(0xFF424242))
                 AuthInfoText(
                     stringResource(R.string.info_item_manage_favorites),
                     16,
-                    Color(0xFF424242)
+                    InfoTextColor
                 )
                 AuthInfoText(
                     stringResource(R.string.info_item_medication_list),
                     16,
-                    Color(0xFF424242)
+                    InfoTextColor
                 )
             }
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

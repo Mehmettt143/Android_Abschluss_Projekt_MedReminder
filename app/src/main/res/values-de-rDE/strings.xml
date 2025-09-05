@@ -22,4 +22,52 @@
     <string name="info_item_reminders">Erinnerungen für Einnahmezeiten</string>
     <string name="info_item_manage_favorites">Ihre Favoriten verwalten</string>
     <string name="info_item_medication_list">Medikamentenliste</string>
+
+    //HomeScreen
+    <string name="label_date_of_today">Heute, %1$s</string>
+    <string name="label_for_placeholder_search_drug">Geben Sie den Medikamentenname ein</string>
+    <string name="label_for_dont_find_drug_text">Keine Medikamente gefunden</string>
+    <string name="label_of_drug_brand_name">Arzneimittel Markenname:</string>
+    <string name="my_drugs">Meine Medikamente</string>
+    <string name="label_medreminder">Medikamenten-Erinnerung</string>
+
+    //FavoriteScreen
+    <string name="label_my_favorites">"Meine Favoriten"</string>
+    <string name="label_for_info_favorite_screen">Dieser Abschnitt zeigt die Medikamente, die Sie regelmäßig verwenden. Es sind auch die Medikamente enthalten, die Ihr Arzt Ihnen empfohlen hat.</string>
+
+    ##AddScreen
+    <string name="label_for_drug_add">Medikament hinzufügen</string>
+    <string name="text_for_new_information_drug">neue Arzneimittelinformationen eingeben</string>
+
+    ##SettingsScreen
+    <string name="label_for_settings">Erinnerungseinstellungen</string>
+    <string name="text_for_settings_reminder_info">Stellen Sie Ihre Benachrichtigunseinstellung ein</string>
+    <string name="infotext_for_notification">Erinnerungshinweis vor dem Zeitpunkt</string>
+    <string name="label_for_notification">Benachrichtigungseinstellungen</string>
+    <string name="label_5_minutes">5 Minuten</string>
+    <string name="label_15_minutes">15 Minuten</string>
+    <string name="label_30_minutes">30 Minuten</string>
+    <string name="label_export">Export</string>
+    <string name="infotext_export">Bitte exportieren Sie Ihre Medikamentenliste im PDF-Format</string>
+    <string name="button_lable_export">als PDF exportieren</string>
+
+    ##DrugAddScreen
+    <string name="label_name">Name</string>
+    <string name="example_aspirin_placeholder">bsp: Aspirin</string>
+    <string name="label_dosis">Dosierung</string>
+    <string name="placeholder_drug_dosis">bsp: 100mg</string>
+    <string name="label_dosis_input">Dosierung</string>
+    <string name="label_time">Uhrzeit</string>
+    <string name="text_save">speichern</string>
+    <string name="loading_text">wird gespeichert...</string>
+    <string name="success_save_text">erfolgreich gespeichert!</string>
+    <string name="label_time_of_drug">Medikamenten-Einnahme</string>
+    <string name="label_mornings">Morgens</string>
+    <string name="label_pm">Mittags</string>
+    <string name="label_afternoon">Abends</string>
+    <string name="label_hour">Stunde</string>
+    <string name="label_minute">Minute</string>
+    <string name="label_brandname">Medikament-Bezeichnung</string>
+
+
 </resources>

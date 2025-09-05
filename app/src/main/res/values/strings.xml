@@ -23,5 +23,54 @@
     <string name="info_item_manage_favorites">Manage your favorites</string>
     <string name="info_item_medication_list">Medication list</string>
 
+    ##HomeScreen
+    <string name="label_date_of_today">Today, %1$s</string>
+    <string name="label_for_placeholder_search_drug">Enter the drug name</string>
+    <string name="label_for_dont_find_drug_text">No drugs find</string>
+    <string name="label_of_drug_brand_name">Drug Brand Name:</string>
+    <string name="my_drugs">My Medications</string>
+    <string name="label_medreminder">MedReminder</string>
+
+
+    ##FavoriteScreen
+    <string name="label_my_favorites">"My Favorites"</string>
+    <string name="label_for_info_favorite_screen">This section shows the medications you use regularly. It also includes the medications recommended by your doctor.
+</string>
+
+    ##AddScreen
+    <string name="label_for_drug_add">Add drug</string>
+    <string name="text_for_new_information_drug">Enter new pharmaceutical information</string>
+
+    ##SettingsScreen
+    <string name="label_for_settings">reminder settings</string>
+    <string name="text_for_settings_reminder_info">Set your notification preferences</string>
+    <string name="infotext_for_notification">Reminder before the time</string>
+    <string name="label_for_notification">Notification Setting</string>
+    <string name="label_5_minutes">5 Minutes</string>
+    <string name="label_15_minutes">15 Minutes</string>
+    <string name="label_30_minutes">30 Minutes</string>
+    <string name="infotext_export">Please export your medication list in PDF format</string>
+    <string name="label_export">Export</string>
+    <string name="button_lable_export">Export as PDF</string>
+
+    ##DrugAddScreen
+    <string name="label_name">Name</string>
+    <string name="example_aspirin_placeholder">e.g.: Aspirin</string>
+    <string name="label_dosis">Dosage</string>
+    <string name="placeholder_drug_dosis">e.g.: 100mg</string>
+    <string name="label_dosis_input">Dosage</string>
+    <string name="label_time">Time</string>
+    <string name="text_save">Save</string>
+    <string name="loading_text">Saving...</string>
+    <string name="success_save_text">Successfully saved!</string>
+    <string name="label_time_of_drug">Medication Intake</string>
+    <string name="label_mornings">Morning</string>
+    <string name="label_pm">Afternoon</string>
+    <string name="label_afternoon">Evening</string>
+    <string name="label_hour">Hour</string>
+    <string name="label_minute">Minute</string>
+    <string name="label_brandname">Medication Name</string>
+
+
 
 </resources>

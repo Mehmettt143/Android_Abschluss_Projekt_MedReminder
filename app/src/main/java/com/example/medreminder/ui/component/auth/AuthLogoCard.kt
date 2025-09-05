@@ -1,4 +1,4 @@
-package com.example.medreminder.ui.component
+package com.example.medreminder.ui.component.auth
 
 
 import androidx.compose.foundation.Image
@@ -41,7 +41,6 @@ fun AuthLogoCard() {
             verticalArrangement = Arrangement.Center
 
         ) {
-            // Bild (Platzhalter, ersetze R.drawable.dein_bild mit deiner Bildressource)
             Image(
                 painter = painterResource(id = R.drawable.logo_round),
                 contentDescription = "logo",
@@ -59,7 +58,7 @@ fun AuthLogoCard() {
             Spacer(modifier = Modifier.padding(8.dp))
             Text(
                 text = "Ihre Gesundheit. Ihre Kontrolle",
-                color = Color.White, // Weißer Text für Kontrast
+                color = Color.White,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )

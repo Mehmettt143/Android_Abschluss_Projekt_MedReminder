@@ -1,4 +1,4 @@
-package com.example.medreminder.ui.component
+package com.example.medreminder.ui.component.auth
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

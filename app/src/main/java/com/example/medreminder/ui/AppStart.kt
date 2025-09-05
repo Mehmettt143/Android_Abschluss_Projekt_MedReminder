@@ -1,6 +1,8 @@
 package com.example.medreminder.ui
 
 import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -27,14 +29,16 @@ import com.example.medreminder.navigation.FavoriteScreenRoute
 import com.example.medreminder.navigation.HomeScreenRoute
 import com.example.medreminder.navigation.NavigationItem
 import com.example.medreminder.navigation.SettingsScreenRoute
-import com.example.medreminder.ui.screen.AddScreen
 import com.example.medreminder.ui.screen.AuthScreen
+import com.example.medreminder.ui.screen.DrugAddScreen
 import com.example.medreminder.ui.screen.FavoriteScreen
 import com.example.medreminder.ui.screen.HomeScreen
 import com.example.medreminder.ui.screen.SettingsScreen
+import com.example.medreminder.ui.theme.BottombarBlue
 import com.example.medreminder.ui.viewmodel.AuthViewModel
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("ResourceAsColor")
 @Composable
 fun AppStart(
@@ -51,7 +55,7 @@ fun AppStart(
         Scaffold(
             bottomBar = {
                 NavigationBar(
-                    containerColor = Color(0xff0000fe),
+                    containerColor = BottombarBlue,
                 ) {
                     NavigationItem.entries.forEach { tabItem ->
                         NavigationBarItem(
@@ -64,7 +68,7 @@ fun AppStart(
                                     painter = painterResource(tabItem.icon),
                                     contentDescription = stringResource(tabItem.label),
                                     modifier = Modifier,
-                                    tint = Color.Unspecified // Keep icon color unchanged
+                                    tint = Color.Unspecified // Farbe ändert sich nicht
                                 )
                             },
                             label = {
@@ -94,7 +98,7 @@ fun AppStart(
                     FavoriteScreen()
                 }
                 composable<AddScreenRoute> {
-                    AddScreen()
+                    DrugAddScreen()
                 }
                 composable<SettingsScreenRoute> {
                     SettingsScreen()
