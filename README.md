@@ -88,4 +88,4 @@ MainActivity.kt
 ## 🚀 Ausblick
 
 - [ ]  Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf Deutsch übersetzt werden mit Hilfe einer API
-- [ ]  Die Favoritenliste oder auch Medikationen könnten als PDF an WhatsApp-Kontakte geschickt werden
+- [ ]  Die Favoritenliste oder auch Medikamentenliste könnten als PDF exportiert werden
