@@ -62,7 +62,7 @@ MainActivity.kt
 
 ## 💾 Datenspeicherung
 
-### Room Database:
+### Firestore:
 - Speichert Favoriten und Erinnerungen lokal für Offline-Nutzung.
 
 ## 🌐 API Calls
@@ -72,7 +72,7 @@ MainActivity.kt
 -  OpenFDA Drug Labeling API:
 -  URL: `https://api.fda.gov/drug/label.json`
 -  Kostenlos, ohne API-Key
--  Suche nach: Markenname, Wirkstoff, Hersteller
+-  Suche nach: Markenname (brandname & genericname)
    
 ## 📚 3rd-Party Frameworks
 
