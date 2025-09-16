@@ -2,16 +2,9 @@ package com.example.medreminder.ui.component.setting
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,17 +16,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.medreminder.R
 import com.example.medreminder.ui.component.HeaderItem
 import com.example.medreminder.ui.component.InfoTextItem
 import com.example.medreminder.ui.viewmodel.DrugAddViewModel
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.medreminder.ui.component.drugadd.FormTextInput
@@ -42,19 +31,20 @@ import com.example.medreminder.ui.component.drugadd.TimeOfDaySelector
 import com.example.medreminder.ui.component.drugadd.TimePickerInput
 
 
+
 @Composable
 fun DrugAddScreen(
     modifier: Modifier = Modifier,
-    viewModel: DrugAddViewModel = viewModel() // ADIM 7: ViewModel enjekte ediliyor
+    viewModel: DrugAddViewModel = viewModel()
 ) {
-    // Önceki state'ler (aynı kalıyor)
+
     var medicationName by remember { mutableStateOf("") }
     var dosage by remember { mutableStateOf("") }
     var selectedTime by remember { mutableStateOf("") }
     var timeHour by remember { mutableStateOf("08") }
     var timeMinute by remember { mutableStateOf("00") }
 
-    // ADIM 7: ViewModel state'lerini dinle
+
     val isSaving by viewModel.isSaving.collectAsState()
     val saveSuccess by viewModel.saveSuccess.collectAsState()
 
@@ -69,6 +59,7 @@ fun DrugAddScreen(
 
             //resetten
             viewModel.resetSaveSuccess()
+
         }
     }
     Column(
@@ -126,11 +117,7 @@ fun DrugAddScreen(
                     timeMinute = timeMinute
                 )
             },
-            isLoading = isSaving,
-            enabled = medicationName.isNotEmpty() && dosage.isNotEmpty() && selectedTime.isNotEmpty(),
-            text = stringResource(R.string.text_save),
-            loadingText = stringResource(R.string.loading_text),
-            modifier = Modifier.padding(horizontal = 32.dp)
+
         )
         // erfolgreiche Speicherung
         if (saveSuccess) {

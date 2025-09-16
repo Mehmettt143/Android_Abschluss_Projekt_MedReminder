@@ -17,4 +17,7 @@ object AddScreenRoute
 @Serializable
 object SettingsScreenRoute
 
+@Serializable
+data class DetailScreenRoute(val drugId: String)
+
 

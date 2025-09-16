@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.medreminder.ui.theme.BottombarBlue
+import com.example.medreminder.ui.theme.DisabledSaveDrugColor
 import com.example.medreminder.ui.theme.TimeOptionColorFalse
 import com.example.medreminder.ui.theme.TimeOptionColorTrue
 
@@ -31,13 +32,13 @@ fun TimeOptionButton(
         colors = if (isSelected) {
             ButtonDefaults.buttonColors(BottombarBlue)
         } else {
-            ButtonDefaults.buttonColors(TimeOptionColorFalse)
+            ButtonDefaults.buttonColors(DisabledSaveDrugColor)
         }
     ) {
         Text(
             text = text,
             color = if (isSelected) Color.White else Color.Black,
-            fontSize = 14.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold
         )
     }

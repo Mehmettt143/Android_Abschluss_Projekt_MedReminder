@@ -3,12 +3,12 @@ package com.example.medreminder.ui.component.drugadd
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.KeyboardType
@@ -54,30 +54,9 @@ fun FormTextInput(
                 .fillMaxWidth()
                 .padding(8.dp),
             singleLine = singleLine,
+            shape = RoundedCornerShape(25.dp),
             keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
         )
     }
 }
 
-// Preview
-@Preview(showBackground = true)
-@Composable
-private fun FormTextInputPreview() {
-    Column {
-        FormTextInput(
-            value = "Aspirin",
-            onValueChange = {},
-            label = "İlaç Adı",
-            placeholder = "bsp: Aspirin",
-            title = "Medication Name"
-        )
-
-        FormTextInput(
-            value = "100mg",
-            onValueChange = {},
-            label = "Dosierung",
-            placeholder = "bsp: 100mg",
-            title = "Dosierung"
-        )
-    }
-}

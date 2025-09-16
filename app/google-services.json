@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "171610625561",
+    "project_id": "medreminder-c3dcd",
+    "storage_bucket": "medreminder-c3dcd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171610625561:android:f12279b5b4de0c38a0bc88",
+        "android_client_info": {
+          "package_name": "com.example.medreminder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA8g9pvL9MFSVq6uUM7lFCb1UI5UFMNJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

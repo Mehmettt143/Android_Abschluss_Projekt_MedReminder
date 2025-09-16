@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">MedReminder</string>
     <string name="tab_label_home">Home</string>
-    <string name="tab_label_favorite">Favorites</string>
+    <string name="tab_label_favorite">Medications</string>
     <string name="tab_label_add_medicament">Add</string>
     <string name="tab_label_setting">Settings</string>
 
@@ -33,16 +33,16 @@
 
 
     ##FavoriteScreen
-    <string name="label_my_favorites">"My Favorites"</string>
+    <string name="label_my_favorites">"Important Medications"</string>
     <string name="label_for_info_favorite_screen">This section shows the medications you use regularly. It also includes the medications recommended by your doctor.
 </string>
 
     ##AddScreen
     <string name="label_for_drug_add">Add drug</string>
-    <string name="text_for_new_information_drug">Enter new pharmaceutical information</string>
+    <string name="text_for_new_information_drug">Record Medication</string>
 
     ##SettingsScreen
-    <string name="label_for_settings">reminder settings</string>
+    <string name="label_for_settings">Notification and Export</string>
     <string name="text_for_settings_reminder_info">Set your notification preferences</string>
     <string name="infotext_for_notification">Reminder before the time</string>
     <string name="label_for_notification">Notification Setting</string>
@@ -61,7 +61,6 @@
     <string name="label_dosis_input">Dosage</string>
     <string name="label_time">Time</string>
     <string name="text_save">Save</string>
-    <string name="loading_text">Saving...</string>
     <string name="success_save_text">Successfully saved!</string>
     <string name="label_time_of_drug">Medication Intake</string>
     <string name="label_mornings">Morning</string>
@@ -70,6 +69,19 @@
     <string name="label_hour">Hour</string>
     <string name="label_minute">Minute</string>
     <string name="label_brandname">Medication Name</string>
+    <string name="title_saving">Saving</string>
+
+    ##DetailScreen
+    <string name="unknown_drug">No drug found</string>
+    <string name="no_information_available">No information available</string>
+    <string name="medicine_information_sheet">Information Leaflet</string>
+    <string name="label_brand_name">Brand</string>
+    <string name="label_generic_name">Generic</string>
+    <string name="label_manufacturer_name">Manufacturer</string>
+    <string name="label_indications_and_usage">Indications</string>
+    <string name="label_dosage_and_administration">Dosage</string>
+    <string name="label_warnings">Warnings</string>
+    <string name="label_adverse_reactions">Adverse Reactions</string>
 
 
 

@@ -1,5 +1,6 @@
 package com.example.medreminder.ui.component.home
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -23,20 +24,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.medreminder.R
-import com.example.medreminder.data.local.Drug
+import com.example.medreminder.data.remote.drugapi.model.DisplayDrug
 import com.example.medreminder.ui.theme.GreenColor
 
 @Composable
 fun DrugCard(
     modifier: Modifier = Modifier,
-    drug: Drug,
-    onFavoriteClick: (Drug) -> Unit,
-    isFavorite: Boolean = false
+    drug: DisplayDrug,
+    isFavorite: Boolean = false,
+    onFavoriteClick: (DisplayDrug) -> Unit,
+    onNavigateToDetail: (DisplayDrug) -> Unit
 ) {
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 4.dp),
+            .padding(horizontal = 8.dp, vertical = 4.dp)
+            .clickable { onNavigateToDetail(drug) },
         colors = CardDefaults.elevatedCardColors(
             containerColor = GreenColor
         )
@@ -54,7 +57,7 @@ fun DrugCard(
                     fontSize = 14.sp
                 )
                 Text(
-                    text = drug.brandName.uppercase(),
+                    text = drug.brandName?.uppercase() ?: stringResource(R.string.unknown_drug),
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
@@ -76,6 +79,5 @@ fun DrugCard(
 @Preview(showBackground = true)
 @Composable
 private fun DrugCardPreview() {
-    // Use Theme here
-   // DrugCard()
+    // Preview için tema ekle
 }

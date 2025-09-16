@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">MedReminder</string>
     <string name="tab_label_home">Startseite</string>
-    <string name="tab_label_favorite">Favoriten</string>
+    <string name="tab_label_favorite">Medikamente</string>
     <string name="tab_label_add_medicament">hinzufügen</string>
     <string name="tab_label_setting">Einstellungen</string>
 
@@ -29,21 +29,21 @@
     <string name="label_for_dont_find_drug_text">Keine Medikamente gefunden</string>
     <string name="label_of_drug_brand_name">Arzneimittel Markenname:</string>
     <string name="my_drugs">Meine Medikamente</string>
-    <string name="label_medreminder">Medikamenten-Erinnerung</string>
+    <string name="label_medreminder">MedReminder</string>
 
     //FavoriteScreen
-    <string name="label_my_favorites">"Meine Favoriten"</string>
+    <string name="label_my_favorites">"Wichtige Medikamente"</string>
     <string name="label_for_info_favorite_screen">Dieser Abschnitt zeigt die Medikamente, die Sie regelmäßig verwenden. Es sind auch die Medikamente enthalten, die Ihr Arzt Ihnen empfohlen hat.</string>
 
     ##AddScreen
     <string name="label_for_drug_add">Medikament hinzufügen</string>
-    <string name="text_for_new_information_drug">neue Arzneimittelinformationen eingeben</string>
+    <string name="text_for_new_information_drug">Arzneimittel erfassen</string>
 
     ##SettingsScreen
-    <string name="label_for_settings">Erinnerungseinstellungen</string>
+    <string name="label_for_settings">Benachrichtigung und Export</string>
     <string name="text_for_settings_reminder_info">Stellen Sie Ihre Benachrichtigunseinstellung ein</string>
     <string name="infotext_for_notification">Erinnerungshinweis vor dem Zeitpunkt</string>
-    <string name="label_for_notification">Benachrichtigungseinstellungen</string>
+    <string name="label_for_notification">Benachrichtigungseinstellung</string>
     <string name="label_5_minutes">5 Minuten</string>
     <string name="label_15_minutes">15 Minuten</string>
     <string name="label_30_minutes">30 Minuten</string>
@@ -59,8 +59,7 @@
     <string name="label_dosis_input">Dosierung</string>
     <string name="label_time">Uhrzeit</string>
     <string name="text_save">speichern</string>
-    <string name="loading_text">wird gespeichert...</string>
-    <string name="success_save_text">erfolgreich gespeichert!</string>
+    <string name="success_save_text">Erfolgreich gespeichert!</string>
     <string name="label_time_of_drug">Medikamenten-Einnahme</string>
     <string name="label_mornings">Morgens</string>
     <string name="label_pm">Mittags</string>
@@ -68,6 +67,19 @@
     <string name="label_hour">Stunde</string>
     <string name="label_minute">Minute</string>
     <string name="label_brandname">Medikament-Bezeichnung</string>
+    <string name="title_saving">Speicherung</string>
+
+    ##DetailScreen
+    <string name="unknown_drug">keine Medikament gefunden</string>
+    <string name="no_information_available">Keine Informationen verfügbar</string>
+    <string name="medicine_information_sheet">Gebrauchsinformation</string>
+    <string name="label_brand_name">Marke</string>
+    <string name="label_generic_name">Generikum</string>
+    <string name="label_manufacturer_name">Hersteller</string>
+    <string name="label_indications_and_usage">Anwendungsgebiete</string>
+    <string name="label_dosage_and_administration">Dosierung</string>
+    <string name="label_warnings">Warnhinweise</string>
+    <string name="label_adverse_reactions">Nebenwirkungen</string>
 
 
 </resources>

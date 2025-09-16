@@ -20,12 +20,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.example.medreminder.R
 import com.example.medreminder.ui.component.HeaderItem
-import com.example.medreminder.ui.component.InfoTextItem
 import com.example.medreminder.ui.component.setting.NotificationSettings
 import com.example.medreminder.ui.component.setting.PdfExportCard
 import com.example.medreminder.ui.component.setting.TimeBeforeNotificationSelector
@@ -54,12 +51,11 @@ fun SettingsScreen(
             modifier.size(84.dp),
             tint = Color.Unspecified
         )
-        InfoTextItem(
-            stringResource(R.string.text_for_settings_reminder_info),
-            textAlign = TextAlign.Center,
-            textDecoration = TextDecoration.Underline
-        )
-
+        /*     InfoTextItem(
+                 stringResource(R.string.text_for_settings_reminder_info),
+                 textAlign = TextAlign.Center,
+                 textDecoration = TextDecoration.Underline
+             )*/
         ElevatedCard(
             modifier = modifier
                 .fillMaxWidth()
@@ -83,9 +79,6 @@ fun SettingsScreen(
             )
         }
 
-
-
-
         // PDF Export Card
         PdfExportCard(
             onExportClicked = onExportPdfClicked
@@ -93,17 +86,7 @@ fun SettingsScreen(
 
         Spacer(modifier = Modifier.weight(1f))
 
-
     }
-
-
 }
 
 
-/*
-@Preview(showBackground = true)
-@Composable
-private fun SettingsScreenPreview() {
-    // Use Theme here
-    SettingsScreen()
-}*/

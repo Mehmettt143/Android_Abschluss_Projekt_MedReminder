@@ -27,16 +27,18 @@ import androidx.navigation.compose.rememberNavController
 import com.example.medreminder.navigation.AddScreenRoute
 import com.example.medreminder.navigation.FavoriteScreenRoute
 import com.example.medreminder.navigation.HomeScreenRoute
-import com.example.medreminder.navigation.NavigationItem
 import com.example.medreminder.navigation.SettingsScreenRoute
+import com.example.medreminder.navigation.DetailScreenRoute
+import com.example.medreminder.navigation.NavigationItem
 import com.example.medreminder.ui.screen.AuthScreen
+import com.example.medreminder.ui.screen.DetailScreen
 import com.example.medreminder.ui.screen.DrugAddScreen
 import com.example.medreminder.ui.screen.FavoriteScreen
 import com.example.medreminder.ui.screen.HomeScreen
 import com.example.medreminder.ui.screen.SettingsScreen
 import com.example.medreminder.ui.theme.BottombarBlue
 import com.example.medreminder.ui.viewmodel.AuthViewModel
-
+import com.example.medreminder.ui.viewmodel.DetailViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @SuppressLint("ResourceAsColor")
@@ -55,20 +57,21 @@ fun AppStart(
         Scaffold(
             bottomBar = {
                 NavigationBar(
-                    containerColor = BottombarBlue,
+                    containerColor = BottombarBlue
                 ) {
                     NavigationItem.entries.forEach { tabItem ->
                         NavigationBarItem(
                             selected = tabItem == selectedTabItem,
                             onClick = {
                                 selectedTabItem = tabItem
+                                navController.navigate(tabItem.route)
                             },
                             icon = {
                                 Icon(
                                     painter = painterResource(tabItem.icon),
                                     contentDescription = stringResource(tabItem.label),
                                     modifier = Modifier,
-                                    tint = Color.Unspecified // Farbe ändert sich nicht
+                                    tint = Color.Unspecified
                                 )
                             },
                             label = {
@@ -77,10 +80,8 @@ fun AppStart(
                             colors = NavigationBarItemDefaults.colors(
                                 selectedTextColor = Color.White,
                                 unselectedTextColor = Color.White,
-                                selectedIconColor = Color.White,
-
-
-                                )
+                                selectedIconColor = Color.White
+                            )
                         )
                     }
                 }
@@ -88,11 +89,14 @@ fun AppStart(
         ) { paddingValues ->
             NavHost(
                 navController = navController,
-                startDestination = selectedTabItem.route,
+                startDestination = HomeScreenRoute,
                 modifier = Modifier.padding(paddingValues)
             ) {
                 composable<HomeScreenRoute> {
-                    HomeScreen()
+                    HomeScreen(
+                        navController = navController,
+
+                        )
                 }
                 composable<FavoriteScreenRoute> {
                     FavoriteScreen()
@@ -102,6 +106,12 @@ fun AppStart(
                 }
                 composable<SettingsScreenRoute> {
                     SettingsScreen()
+                }
+                composable<DetailScreenRoute> {
+                    DetailScreen(
+                        viewModel = DetailViewModel(it.savedStateHandle),
+                        navController = navController
+                    )
                 }
             }
         }

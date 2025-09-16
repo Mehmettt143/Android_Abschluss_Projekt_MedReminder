@@ -3,7 +3,7 @@ package com.example.medreminder.ui.viewmodel
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.medreminder.data.service.FirebaseAuthService
+import com.example.medreminder.data.remote.firebase.FirebaseAuthService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,7 +22,7 @@ class AuthViewModel(
     // Ausgangssituation: Flow<User?>
     // Was wir haben möchten: Boolean
     val isLoggedIn = authService.authState
-        .map{ nullableUser ->
+        .map { nullableUser ->
             nullableUser != null
             // kürzere schreibweise, gleiche logik
 //            if (nullableUser != null)
@@ -35,8 +35,6 @@ class AuthViewModel(
             started = SharingStarted.WhileSubscribed(),
             initialValue = false
         )
-
-
 
 
     // ui states

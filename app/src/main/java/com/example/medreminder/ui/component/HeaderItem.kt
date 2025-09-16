@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun HeaderItem(
     title: String,
-    size: Int = 30
+    size: Int = 27
 ) {
     Box(
         modifier = Modifier

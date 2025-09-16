@@ -1,7 +1,5 @@
 package com.example.medreminder.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import com.example.medreminder.R
 
 
@@ -23,15 +21,15 @@ enum class NavigationItem(
 
 
     Add(
-    route = AddScreenRoute,
-    label = R.string.tab_label_add_medicament,
-    icon = R.drawable.add
+        route = AddScreenRoute,
+        label = R.string.tab_label_add_medicament,
+        icon = R.drawable.add
     ),
 
     Setting(
-    route = SettingsScreenRoute,
-    label = R.string.tab_label_setting,
-    icon = R.drawable.settings
+        route = SettingsScreenRoute,
+        label = R.string.tab_label_setting,
+        icon = R.drawable.settings
     )
 
 

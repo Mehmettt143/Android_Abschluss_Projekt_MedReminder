@@ -25,10 +25,10 @@ fun FavoriteScreen(
 ) {
     Column(
         modifier.fillMaxSize(),
-horizontalAlignment = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
 
-    ){
+    ) {
         HeaderItem(stringResource(R.string.label_my_favorites))
         Icon(
             painter = painterResource(R.drawable.star),
@@ -36,15 +36,17 @@ horizontalAlignment = Alignment.CenterHorizontally,
             modifier.size(84.dp),
             tint = Color.Unspecified
         )
-        InfoTextItem(stringResource(R.string.label_for_info_favorite_screen), textAlign = TextAlign.Center)
+        InfoTextItem(
+            stringResource(R.string.label_for_info_favorite_screen),
+            textAlign = TextAlign.Center
+        )
 
         FavoriteCardList(
-            drugs =emptyList() ,
+            drugs = emptyList(),
             favorites = emptyList()
         ) {
 
 
-            
         }
 
 

@@ -11,19 +11,25 @@ import kotlinx.coroutines.launch
 class DrugAddViewModel : ViewModel() {
 
 
-    // Kaydetme durumu için state
+    // Speicherzustand
     private val _isSaving = MutableStateFlow(false)
     val isSaving = _isSaving.asStateFlow()
 
-    // Kaydetme başarı durumu
+    // Speichern erfolgreich oder nicht
     private val _saveSuccess = MutableStateFlow(false)
     val saveSuccess = _saveSuccess.asStateFlow()
 
-    // Drug kaydetme fonksiyonu
-    fun saveDrug(medicationName: String, dosage: String, selectedTime: String, timeHour: String, timeMinute: String)
-    { viewModelScope.launch {
+    // DrugReminder funktion zum Speichern
+    fun saveDrug(
+        medicationName: String,
+        dosage: String,
+        selectedTime: String,
+        timeHour: String,
+        timeMinute: String
+    ) {
+        viewModelScope.launch {
             try {
-                // Kaydetme işlemi başladı
+                // Speichervorgang
                 _isSaving.value = true
 
                 // Drug erzeugen
@@ -39,10 +45,10 @@ class DrugAddViewModel : ViewModel() {
 
                 delay(2000)
 
-                // firestore
-                // firestore.collection("drugs").add(drug)
+                // firestore speicherung
+                //
 
-                println("Kaydedildi: $drug")
+                println("Save: $drug")
 
                 // erfolgreich gespeichert
                 _saveSuccess.value = true
@@ -51,7 +57,7 @@ class DrugAddViewModel : ViewModel() {
             } catch (e: Exception) {
                 // Fehler
                 _isSaving.value = false
-                println("Fehler: ${e.message}")
+                println("Error: ${e.message}")
             }
         }
     }

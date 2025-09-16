@@ -1,11 +1,10 @@
-package com.example.medreminder.data.service
+package com.example.medreminder.data.remote.firebase
 
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlin.also
 
 class FirebaseAuthService {
 
