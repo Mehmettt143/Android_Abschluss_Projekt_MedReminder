@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.medreminder.ui.theme.BottombarBlue
 
 @Composable
 fun InfoTextItem(
@@ -22,19 +23,21 @@ fun InfoTextItem(
     size: Int = 18,
     color: Color = Color.Black,
     textAlign: TextAlign,
-    textDecoration: TextDecoration = TextDecoration.None
+    textDecoration: TextDecoration = TextDecoration.None,
+    modifier: Modifier = Modifier
 ) {
+    //Box für den Informationstext
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
         contentAlignment = Alignment.Center
     ) {
-
+        //Text für die Information
         Text(
             text = title,
             fontSize = size.sp,
-            style = MaterialTheme.typography.bodyLarge,
+            style = MaterialTheme.typography.titleMedium,
             color = color,
             modifier = Modifier.fillMaxWidth(),
             fontWeight = FontWeight.Bold,
@@ -46,9 +49,15 @@ fun InfoTextItem(
 
 }
 
+//Preview für den Informationstext
 @Preview(showBackground = true)
 @Composable
-private fun InfoTextPreview() {
-    // Use Theme here
-    //InfoTextItem()
+private fun InfoTextItemPreview() {
+    InfoTextItem(
+        title = "MedikamentenInformationen",
+        size = 18,
+        color = BottombarBlue,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.fillMaxWidth()
+    )
 }

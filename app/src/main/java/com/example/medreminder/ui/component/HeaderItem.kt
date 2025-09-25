@@ -14,24 +14,29 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.medreminder.ui.theme.BottombarBlue
 
 @Composable
 fun HeaderItem(
     title: String,
-    size: Int = 27
+    size: Int = 27,
+    color: Color = BottombarBlue,
+    modifier: Modifier = Modifier
 ) {
+    //Box für die Überschrift
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
         contentAlignment = Alignment.TopCenter
     ) {
 
+        //Text für die Überschrift
         Text(
             text = title,
             fontSize = size.sp,
-            style = MaterialTheme.typography.bodyLarge,
-            color = Color(0xFF0000FE),
+            style = MaterialTheme.typography.titleLarge,
+            color = color,
             modifier = Modifier.fillMaxWidth(),
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
@@ -41,9 +46,10 @@ fun HeaderItem(
 
 }
 
+//Preview für Überschrift
 @Preview(showBackground = true)
 @Composable
 private fun AppNameHeaderItemPreview() {
-    // Use Theme here
-    HeaderItem("")
+
+    HeaderItem("MedReminder")
 }

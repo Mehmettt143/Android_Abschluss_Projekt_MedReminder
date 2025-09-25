@@ -22,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,30 +39,32 @@ import com.example.medreminder.ui.theme.InfoTextColor
 import com.example.medreminder.ui.theme.InfoTextTitleColor
 import com.example.medreminder.ui.viewmodel.AuthViewModel
 
-
 @Composable
 fun AuthScreen(
     modifier: Modifier = Modifier,
     authViewModel: AuthViewModel = viewModel()
 ) {
+    val context = LocalContext.current
     val showRegister by authViewModel.showRegister.collectAsState()
     val emailInput by authViewModel.emailInput.collectAsState()
     val passwordInput by authViewModel.passwordInput.collectAsState()
     val passwordRepeatInput by authViewModel.passwordRepeatInput.collectAsState()
     val usernameInput by authViewModel.usernameInput.collectAsState()
     val showEmailHint by authViewModel.showEmailHint.collectAsState()
-    val showPasswordHint by authViewModel.showPasswordHint.collectAsState()
-    val showPasswordRepeatHint by authViewModel.showPasswordRepeatHint.collectAsState()
+    val errorMessage by authViewModel.errorMessage.collectAsState()
+    val username by authViewModel.username.collectAsState()
 
+
+    //Layout der Authentifizierungsseite
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-
+        //Logo mit Titel anzeigen
         AuthLogoCard()
 
-
+        //Eingabeformular für Login/Registrierung
         Column(
             modifier = Modifier
                 .weight(1f)
@@ -71,13 +74,16 @@ fun AuthScreen(
             verticalArrangement = Arrangement.Center
         ) {
 
+            //Willkomenstext
             Text(
-                text = stringResource(R.string.tab_label_auth_welcome_text),
+                text = stringResource(R.string.tab_label_auth_welcome_text_username, username),
                 color = Color.Black,
-                fontSize = 35.sp,
+                fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
             )
+
             Spacer(Modifier.height(8.dp))
+
             Text(
                 text = stringResource(R.string.tab_label_auth_info),
                 color = Color.Gray,
@@ -85,6 +91,17 @@ fun AuthScreen(
                 fontWeight = FontWeight.Bold
             )
 
+            // Error mesajını göster
+            errorMessage?.let { error ->
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = error,
+                    color = Color.Red,
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
+            //E-Mail-Eingabefeld
             EmailTextField(
                 emailText = emailInput,
                 onEmailTextChange = { authViewModel.onEmailInputChange(it) },
@@ -119,8 +136,9 @@ fun AuthScreen(
 
             Spacer(Modifier.height(16.dp))
 
+            //Button für Login/Registrierung
             Button(
-                onClick = { authViewModel.loginOrRegister() },
+                onClick = { authViewModel.loginOrRegister(context) },
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(Color(0xFF0000FE))
             ) {
@@ -143,20 +161,23 @@ fun AuthScreen(
                 )
             }
         }
-
-
+        //Informationskarte mit App-Features
         Card(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 32.dp, vertical = 16.dp),
+
             colors = CardDefaults.cardColors(
                 containerColor = Color(0xFFF5F5F5)
             )
         ) {
             Column(
-                modifier = Modifier.padding(16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+                modifier = Modifier
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState(1)),
+                horizontalAlignment = Alignment.CenterHorizontally,
+
+                ) {
                 Text(
                     text = stringResource(R.string.info_title),
                     fontSize = 18.sp,
@@ -186,6 +207,5 @@ fun AuthScreen(
 @Preview(showBackground = true)
 @Composable
 private fun AuthScreenPreview() {
-    // Use Theme here
     AuthScreen()
 }

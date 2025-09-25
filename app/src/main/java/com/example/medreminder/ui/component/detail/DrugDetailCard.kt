@@ -1,5 +1,6 @@
 package com.example.medreminder.ui.component.detail
 
+
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -44,6 +45,7 @@ import com.example.medreminder.ui.theme.warningsTitleColor
 
 @Composable
 fun DrugDetailCard(drug: DisplayDrug?) {
+    //Hauptspalte für die Medikamentendetails mit Scroll-Funktion
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +53,7 @@ fun DrugDetailCard(drug: DisplayDrug?) {
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        //Symbol für die Medikamenteninformationen
         Icon(
             painter = painterResource(R.drawable.medicine_information),
             contentDescription = "medicine_information_icon",
@@ -65,6 +67,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth()
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .padding(vertical = 4.dp)
                 .border(
                     1.dp,
@@ -76,16 +80,24 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                 containerColor = brandCardColor
             )
         ) {
-            Column(modifier = Modifier.padding(16.dp)) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
                 InfoTextItem(
                     title = stringResource(R.string.label_brand_name),
                     color = brandTitleColor,
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.brandName ?: stringResource(id = R.string.unknown_drug),
+                    title = if (drug?.brandName.isNullOrEmpty()) {
+                        stringResource(id = R.string.unknown_drug)
+                    } else {
+                        drug.brandName
+                    },
                     color = detailTextColor,
-                    textAlign = TextAlign.Start
+                    textAlign = TextAlign.Center
                 )
             }
         }
@@ -96,6 +108,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .border(
                     1.dp,
                     shape = RoundedCornerShape(20.dp),
@@ -113,7 +127,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.genericName ?: stringResource(id = R.string.unknown_drug),
+                    title = if (drug?.genericName.isNullOrEmpty()) {
+                        stringResource(id = R.string.unknown_drug)
+                    } else {
+                        drug.genericName
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Center
                 )
@@ -126,6 +144,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .border(
                     1.dp,
                     shape = RoundedCornerShape(20.dp),
@@ -143,7 +163,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.manufacturerName ?: stringResource(id = R.string.unknown_drug),
+                    title = if (drug?.manufacturerName.isNullOrEmpty()) {
+                        stringResource(id = R.string.unknown_drug)
+                    } else {
+                        drug.manufacturerName
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Center
                 )
@@ -156,6 +180,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 4.dp)
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .border(
                     1.dp,
                     shape = RoundedCornerShape(20.dp),
@@ -174,8 +200,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.indicationsAndUsage
-                        ?: stringResource(R.string.no_information_available),
+                    title = if (drug?.indicationsAndUsage.isNullOrEmpty()) {
+                        stringResource(R.string.no_information_available)
+                    } else {
+                        drug.indicationsAndUsage
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Justify
                 )
@@ -187,6 +216,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth()
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .padding(vertical = 4.dp)
                 .border(
                     1.dp,
@@ -205,8 +236,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.dosageAndAdministration
-                        ?: stringResource(R.string.no_information_available),
+                    title = if (drug?.dosageAndAdministration.isNullOrEmpty()) {
+                        stringResource(R.string.no_information_available)
+                    } else {
+                        drug.dosageAndAdministration
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Justify
                 )
@@ -218,6 +252,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth()
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .padding(vertical = 4.dp)
                 .border(
                     1.dp,
@@ -237,7 +273,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.warnings ?: stringResource(R.string.no_information_available),
+                    title = if (drug?.warnings.isNullOrEmpty()) {
+                        stringResource(R.string.no_information_available)
+                    } else {
+                        drug.warnings
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Justify
                 )
@@ -250,6 +290,8 @@ fun DrugDetailCard(drug: DisplayDrug?) {
         ElevatedCard(
             modifier = Modifier
                 .fillMaxSize()
+                .size(width = 200.dp, height = 300.dp)
+                .verticalScroll(rememberScrollState())
                 .padding(vertical = 4.dp)
                 .border(
                     1.dp,
@@ -268,8 +310,11 @@ fun DrugDetailCard(drug: DisplayDrug?) {
                     textAlign = TextAlign.Center
                 )
                 InfoTextItem(
-                    title = drug?.adverseReactions
-                        ?: stringResource(R.string.no_information_available),
+                    title = if (drug?.adverseReactions.isNullOrEmpty()) {
+                        stringResource(R.string.no_information_available)
+                    } else {
+                        drug.adverseReactions
+                    },
                     color = detailTextColor,
                     textAlign = TextAlign.Justify
                 )

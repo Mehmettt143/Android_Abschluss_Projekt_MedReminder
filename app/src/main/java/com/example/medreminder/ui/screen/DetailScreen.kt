@@ -1,6 +1,5 @@
 package com.example.medreminder.ui.screen
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,12 +20,19 @@ import com.example.medreminder.ui.component.HeaderItem
 import com.example.medreminder.ui.component.InfoTextItem
 import com.example.medreminder.ui.component.detail.DrugDetailCard
 import com.example.medreminder.ui.viewmodel.DetailViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun DetailScreen(viewModel: DetailViewModel, navController: NavController) {
-
+fun DetailScreen(
+    viewModel: DetailViewModel = koinViewModel(),
+    navController: NavController,
+) {
     val drug = viewModel.drug.collectAsState().value
+    val isLoading = viewModel.isLoading.collectAsState().value
+    val errorMessage = viewModel.errorMessage.collectAsState().value
 
+
+    //Zurück-Button und Titel
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -34,11 +40,8 @@ fun DetailScreen(viewModel: DetailViewModel, navController: NavController) {
     ) {
         Row(modifier = Modifier) {
             IconButton(
-
                 onClick = { navController.popBackStack() },
-                modifier = Modifier
-                    .padding(8.dp)
-
+                modifier = Modifier.padding(8.dp)
             ) {
                 Icon(
                     painter = painterResource(R.drawable.left_arrow),
@@ -47,44 +50,41 @@ fun DetailScreen(viewModel: DetailViewModel, navController: NavController) {
                 )
             }
             HeaderItem(stringResource(R.string.medicine_information_sheet))
-
         }
+        //Ladezustand und Fehler oder Medikamentendetail anzeigen
+        when {
+            isLoading -> {
+                InfoTextItem(
+                    title = "Loading...",
+                    color = Color.Gray,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            errorMessage != null -> {
+                //Fehlermeldung anzeigen
+                InfoTextItem(
+                    title = errorMessage,
+                    color = Color.Red,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            drug == null -> {
+                //Kein Medikament gefunden
+                InfoTextItem(
+                    title = stringResource(id = R.string.label_for_dont_find_drug_text),
+                    color = Color.Red,
+                    textAlign = TextAlign.Center
+                )
+            }
+
+            else -> {
+                //Medikamentdetails anzeigen
+                DrugDetailCard(drug = drug)
 
 
-
-        if (drug == null) {
-
-            InfoTextItem(
-                title = stringResource(id = R.string.label_for_dont_find_drug_text),
-                color = Color.Red,
-                textAlign = TextAlign.Center
-            )
-
-        } else {
-            DrugDetailCard(drug = drug)
+            }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -20,8 +20,11 @@ fun TimeOptionButton(
     text: String,
     isSelected: Boolean,
     onClick: () -> Unit,
+    textColor: Color = Color.Black,
+    fontSize: Int = 10,
     modifier: Modifier = Modifier
 ) {
+    //Button für die Zeitoption
     Button(
         onClick = onClick,
         modifier = modifier
@@ -35,16 +38,23 @@ fun TimeOptionButton(
     ) {
         Text(
             text = text,
-            color = Color.Black,
-            fontSize = 14.sp,
+            color = if (isSelected) Color.White else textColor,
+            fontSize = fontSize.sp,
             fontWeight = FontWeight.Bold
         )
     }
 }
 
-@Preview(showBackground = true)
+// Preview für den Button (ausgewählt)
+@Preview(showBackground = true, name = "Selected")
 @Composable
-private fun TimeOptionButtonPreview() {
-    // Use Theme here
-    // TimeOptionButton()
+private fun TimeOptionButtonSelectedPreview() {
+    TimeOptionButton(
+        text = "Morgens",
+        isSelected = true,
+        onClick = {},
+        textColor = Color.Black,
+        fontSize = 14,
+        modifier = Modifier.fillMaxWidth()
+    )
 }

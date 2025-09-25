@@ -27,7 +27,9 @@ fun TimePickerInput(
     modifier: Modifier = Modifier,
     title: String = stringResource(R.string.label_time)
 ) {
+    //Spalte für den Zeitwähler
     Column(modifier = modifier) {
+        //Titel des Zeitwählers
         Text(
             text = title,
             color = BottombarBlue,
@@ -35,7 +37,7 @@ fun TimePickerInput(
             modifier = Modifier.padding(bottom = 8.dp, start = 8.dp)
         )
 
-        // Uhrzeit
+        // Zeile für Stunden- und Minuten-Eingabe
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -43,7 +45,7 @@ fun TimePickerInput(
                 .fillMaxWidth()
                 .padding(8.dp)
         ) {
-            // Stunden input
+            // Eingabefeld für Stunden
             TimeInput(
                 value = hour,
                 onValueChange = { newValue ->
@@ -51,17 +53,17 @@ fun TimePickerInput(
                     onTimeChanged(validatedValue, minute)
                 },
                 label = stringResource(R.string.label_hour),
-                placeholder = "08",
+                placeholder = "",
                 modifier = Modifier.weight(1f)
             )
-
+            //Trennzeichen für Stunden und Minuten
             Text(
                 text = ":",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
 
-            // Minuten Input
+            // Eingabefeld für Minuten
             TimeInput(
                 value = minute,
                 onValueChange = { newValue ->
@@ -69,7 +71,7 @@ fun TimePickerInput(
                     onTimeChanged(hour, validatedValue)
                 },
                 label = stringResource(R.string.label_minute),
-                placeholder = "00",
+                placeholder = "",
                 modifier = Modifier.weight(1f)
             )
         }
@@ -79,6 +81,5 @@ fun TimePickerInput(
 @Preview(showBackground = true)
 @Composable
 private fun TimePickerInputPreview() {
-    // Use Theme here
-    // TimePickerInput()
+    //Preview für Zeitwähler
 }

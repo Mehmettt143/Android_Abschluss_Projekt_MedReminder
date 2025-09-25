@@ -18,14 +18,11 @@ enum class NavigationItem(
         label = R.string.tab_label_favorite,
         icon = R.drawable.star
     ),
-
-
     Add(
         route = AddScreenRoute,
         label = R.string.tab_label_add_medicament,
         icon = R.drawable.add
     ),
-
     Setting(
         route = SettingsScreenRoute,
         label = R.string.tab_label_setting,

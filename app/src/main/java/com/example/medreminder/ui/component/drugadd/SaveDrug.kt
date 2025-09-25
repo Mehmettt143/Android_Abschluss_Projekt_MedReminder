@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.medreminder.R
+import com.example.medreminder.ui.theme.DisabledSaveDrugColor
 import com.example.medreminder.ui.theme.SaveDrugColor
 
 @Composable
@@ -28,21 +29,24 @@ fun SaveDrug(
     text: String = stringResource(R.string.text_save),
     backgroundColor: Color = SaveDrugColor
 ) {
+    //Button zum Speichern eines Medikaments
     Button(
         onClick = onClick,
-        enabled = enabled,
+        enabled = enabled, // Aktiviert oder Deaktiviert basierend auf Eingaben
         modifier = modifier
             .fillMaxWidth()
-            .height(84.dp),
+            .height(64.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = if (enabled) backgroundColor else Color.Gray
+            containerColor = if (enabled) backgroundColor else DisabledSaveDrugColor //Farbe abhängig vom Zustand
         ),
-        shape = RoundedCornerShape(12.dp)
+        shape = RoundedCornerShape(12.dp) //abgerundete Ecken
     ) {
+        //Zeile für den Button-Inhalt
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
+            //Text im Button
             Text(
                 text = text,
                 color = Color.White,
@@ -53,6 +57,7 @@ fun SaveDrug(
     }
 }
 
+//Preview für den Speicherbutton
 @Preview(showBackground = true)
 @Composable
 private fun SaveDrugPreview() {

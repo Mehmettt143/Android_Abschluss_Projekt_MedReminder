@@ -22,6 +22,7 @@ fun DrugSearchBar(
     onSearchQueryChange: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    //Umrandetes Textfeld für die Medikamentensuche
     OutlinedTextField(
         value = searchQuery,
         onValueChange = onSearchQueryChange,
@@ -47,5 +48,5 @@ fun DrugSearchBar(
 @Preview(showBackground = true)
 @Composable
 private fun DrugSearchBarPreview() {
-
+    //Preview für die Suchleiste
 }

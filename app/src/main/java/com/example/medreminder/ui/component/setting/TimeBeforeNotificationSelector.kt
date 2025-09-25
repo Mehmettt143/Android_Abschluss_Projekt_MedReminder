@@ -9,7 +9,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.medreminder.R
-import com.example.medreminder.ui.component.drugadd.TimeOptionButton
 
 
 @Composable
@@ -17,28 +16,44 @@ fun TimeBeforeNotificationSelector(
     selectedTime: String,
     onTimeSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
-
     options: List<String> = listOf(
         stringResource(R.string.label_5_minutes),
         stringResource(R.string.label_15_minutes),
         stringResource(R.string.label_30_minutes)
     )
 ) {
+    //Zeile für die Zeitoptionsauswahl
     Row(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
-        options.forEach { option ->
-            TimeOptionButton(
-                text = option,
-                isSelected = selectedTime == option,
-                onClick = { onTimeSelected(option) },
-                modifier = Modifier.weight(1f)
-            )
+        //Prüft ob Optionen vorhanden sind
+        if (options.isNotEmpty()) {
+            options.forEach { option ->
+                //Button für jede Zeitoption
+                TimeOptionButton(
+                    text = option,
+                    isSelected = selectedTime == option,
+                    onClick = { onTimeSelected(option) },
+                    modifier = Modifier.weight(1f)
+                )
+            }
         }
     }
-
 }
 
-
-
+// Preview für Beispiel Optionen
+@Preview(showBackground = true, name = "Example Options")
+@Composable
+private fun TimeBeforeNotificationSelectorEmptyPreview() {
+    TimeBeforeNotificationSelector(
+        selectedTime = "5 Minuten",
+        onTimeSelected = {},
+        options = listOf(
+            "5 Minuten",
+            "15 Minuten",
+            "30 Minuten"
+        ),
+        modifier = Modifier.fillMaxWidth()
+    )
+}

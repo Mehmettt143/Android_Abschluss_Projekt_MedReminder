@@ -17,6 +17,7 @@ fun DrugsList(
     onFavoriteClick: (DisplayDrug) -> Unit,
     onNavigateToDetail: (DisplayDrug) -> Unit
 ) {
+    //LazyColumn für die Liste der Medikamente
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(8.dp)
@@ -35,5 +36,6 @@ fun DrugsList(
 @Preview(showBackground = true)
 @Composable
 private fun DrugListPreview() {
+    //Vorschau für die Medikamentenliste
 
 }

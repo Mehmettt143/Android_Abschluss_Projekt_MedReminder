@@ -7,7 +7,21 @@
 
     ##Auth
     <string name="tab_label_auth_text">Your Health.Your control</string>
-    <string name="tab_label_auth_welcome_text">Welcome back!</string>
+    <string name="tab_label_auth_welcome_text_username">Welcome back!</string>
+    <string name="error_operation_failed">Operation failed</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_password_length">Password must be at least 6 characters</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="email_format_error">The email must be in a valid format, e.g., someone@example.com</string>
+    <string name="email_label">Email:</string>
+    <string name="password_label">Password:</string>
+    <string name="password_visibility_on">Password Visibility On</string>
+    <string name="password_visibility_off">Password Visibility Off</string>
+    <string name="username_label">Username:</string>
+    <string name="logout_failed">Logout failed</string>
+    <string name="username_load_failed">Username could not be loaded</string>
+    <string name="username_load_error">Username loading error</string>
+
 
     ##AuthLogin
     <string name="tab_label_auth_info">Sign in to your account.</string>
@@ -28,8 +42,9 @@
     <string name="label_for_placeholder_search_drug">Enter the drug name</string>
     <string name="label_for_dont_find_drug_text">No drugs find</string>
     <string name="label_of_drug_brand_name">Drug Brand Name:</string>
-    <string name="my_drugs">My Medications</string>
+    <string name="my_drugs">%1$s\'s Medications</string>
     <string name="label_medreminder">MedReminder</string>
+    <string name="label_drug_reminder">Drug Reminder</string>
 
 
     ##FavoriteScreen
@@ -40,6 +55,7 @@
     ##AddScreen
     <string name="label_for_drug_add">Add drug</string>
     <string name="text_for_new_information_drug">Record Medication</string>
+
 
     ##SettingsScreen
     <string name="label_for_settings">Notification and Export</string>
@@ -57,7 +73,7 @@
     <string name="label_name">Name</string>
     <string name="example_aspirin_placeholder">e.g.: Aspirin</string>
     <string name="label_dosis">Dosage</string>
-    <string name="placeholder_drug_dosis">e.g.: 100mg</string>
+    <string name="placeholder_drug_dosis">e.g.: 100 mg</string>
     <string name="label_dosis_input">Dosage</string>
     <string name="label_time">Time</string>
     <string name="text_save">Save</string>
@@ -69,7 +85,8 @@
     <string name="label_hour">Hour</string>
     <string name="label_minute">Minute</string>
     <string name="label_brandname">Medication Name</string>
-    <string name="title_saving">Saving</string>
+    <string name="title_saving">Drug Saving</string>
+    <string name="ok_button">OK</string>
 
     ##DetailScreen
     <string name="unknown_drug">No drug found</string>
@@ -82,7 +99,7 @@
     <string name="label_dosage_and_administration">Dosage</string>
     <string name="label_warnings">Warnings</string>
     <string name="label_adverse_reactions">Adverse Reactions</string>
-
+    <string name="loading">Loading...</string>
 
 
 </resources>

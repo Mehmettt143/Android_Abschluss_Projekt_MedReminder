@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <string name="app_name" translatable="false">MedReminder</string>
+    <string name="tab_label_home">Ana Sayfa</string>
+    <string name="tab_label_favorite">İlaçlar</string>
+    <string name="tab_label_add_medicament">Ekle</string>
+    <string name="tab_label_setting">Ayarlar</string>
+
+    ##Auth
+    <string name="tab_label_auth_text">Sağlığınız. Sizin Kontrolünüzde.</string>
+    <string name="tab_label_auth_welcome_text_username">Tekrar Hoş Geldiniz!</string>
+    <string name="error_operation_failed">İşlem başarısız</string>
+    <string name="error_invalid_email">Geçersiz e-posta adresi</string>
+    <string name="error_password_length">Şifre en az 6 karakter olmalıdır</string>
+    <string name="error_password_mismatch">Şifreler uyuşmuyor</string>
+    <string name="email_format_error">E-posta geçerli bir formatta olmalıdır, örn. biri@ornek.com</string>
+    <string name="email_label">E-posta:</string>
+    <string name="password_label">Şifre:</string>
+    <string name="password_visibility_on">Şifre Görünürlüğü Açık</string>
+    <string name="password_visibility_off">Şifre Görünürlüğü Kapalı</string>
+    <string name="username_label">Kullanıcı Adı:</string>
+    <string name="logout_failed">Çıkış yapılamadı</string>
+    <string name="username_load_failed">Kullanıcı adı yüklenemedi</string>
+    <string name="username_load_error">Kullanıcı adı yükleme hatası</string>
+
+    ##AuthLogin
+    <string name="tab_label_auth_info">Hesabınıza giriş yapın.</string>
+    <string name="tab_label_auth_login">Zaten hesabınız var mı? Giriş Yap</string>
+    <string name="tab_label_auth_button_login">giriş yap</string>
+    <string name="tab_label_auth_button_register">kayıt ol</string>
+    <string name="tab_label_auth_register">Hesabınız yok mu? Kayıt Ol</string>
+
+    ##AuthInfo
+    <string name="info_title">Neler Bekler:</string>
+    <string name="info_item_search_medications">İlaçları ara ve kaydet</string>
+    <string name="info_item_reminders">Alım zamanları için hatırlatıcılar</string>
+    <string name="info_item_manage_favorites">Favorilerinizi yönetin</string>
+    <string name="info_item_medication_list">İlaç listeniz</string>
+
+    ##HomeScreen
+    <string name="label_date_of_today">Bugün,%1$s</string>
+    <string name="label_for_placeholder_search_drug">İlaç adını girin</string>
+    <string name="label_for_dont_find_drug_text">İlaç bulunamadı</string>
+    <string name="label_of_drug_brand_name">İlaç Marka Adı:</string>
+    <string name="my_drugs">%1$s\'in İlaçları</string>
+    <string name="label_medreminder">İlaç Hatırlatıcı</string>
+    <string name="label_drug_reminder">İlaç Hatırlatma</string>
+
+    ##FavoriteScreen
+    <string name="label_my_favorites">"Önemli İlaçlar"</string>
+    <string name="label_for_info_favorite_screen">Bu bölüm, düzenli kullandığınız ilaçları gösterir. Ayrıca doktorunuzun önerdiği ilaçları da içerir.</string>
+
+    ##AddScreen
+    <string name="label_for_drug_add">İlaç Ekle</string>
+    <string name="text_for_new_information_drug">İlaç Kaydı</string>
+
+    ##SettingsScreen
+    <string name="label_for_settings">Bildirim ve Dışa Aktarma</string>
+    <string name="text_for_settings_reminder_info">Bildirim tercihlerinizi ayarlayın</string>
+    <string name="infotext_for_notification">Zamandan önce hatırlatma</string>
+    <string name="label_for_notification">Bildirim Ayarları</string>
+    <string name="label_5_minutes">5 Dakika</string>
+    <string name="label_15_minutes">15 Dakika</string>
+    <string name="label_30_minutes">30 Dakika</string>
+    <string name="infotext_export">Lütfen ilaç listenizi PDF formatında dışa aktarın</string>
+    <string name="label_export">Dışa Aktar</string>
+    <string name="button_lable_export">PDF olarak Dışa Aktar</string>
+
+    ##DrugAddScreen
+    <string name="label_name">Ad</string>
+    <string name="example_aspirin_placeholder">ör.: Aspirin</string>
+    <string name="label_dosis">Dozaj</string>
+    <string name="placeholder_drug_dosis">ör.: 100 mg</string>
+    <string name="label_dosis_input">Dozaj</string>
+    <string name="label_time">Zaman</string>
+    <string name="text_save">Kaydet</string>
+    <string name="success_save_text">Başarıyla kaydedildi!</string>
+    <string name="label_time_of_drug">İlaç Alım Zamanı</string>
+    <string name="label_mornings">Sabah</string>
+    <string name="label_pm">Öğleden Sonra</string>
+    <string name="label_afternoon">Akşam</string>
+    <string name="label_hour">Saat</string>
+    <string name="label_minute">Dakika</string>
+    <string name="label_brandname">İlaç Adı</string>
+    <string name="title_saving">İlaç Kaydetme</string>
+    <string name="ok_button">Tamam</string>
+
+    ##DetailScreen
+    <string name="unknown_drug">İlaç bulunamadı</string>
+    <string name="no_information_available">Bilgi mevcut değil</string>
+    <string name="medicine_information_sheet">Bilgi Formu</string>
+    <string name="label_brand_name">Marka</string>
+    <string name="label_generic_name">Jenerik</string>
+    <string name="label_manufacturer_name">Üretici</string>
+    <string name="label_indications_and_usage">Kullanım Endikasyonları</string>
+    <string name="label_dosage_and_administration">Dozaj ve Uygulama</string>
+    <string name="label_warnings">Uyarılar</string>
+    <string name="label_adverse_reactions">Yan Etkiler</string>
+    <string name="loading">Yükleniyor...</string>
+
+</resources>

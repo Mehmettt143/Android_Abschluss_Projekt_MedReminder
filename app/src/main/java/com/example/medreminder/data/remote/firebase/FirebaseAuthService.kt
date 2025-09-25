@@ -1,58 +1,46 @@
 package com.example.medreminder.data.remote.firebase
 
 import android.util.Log
+import com.example.medreminder.data.remote.firebase.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.tasks.await
 
 class FirebaseAuthService {
-
-    // empfohlen: Dependency Injection mit Koin verwenden -> singleOf(::FirebaseAuthService)
-    // alternativ: ein singleton aus dem FirebaseAuthService machen
-    companion object {
-        @Volatile
-        private var instance: FirebaseAuthService? = null
-
-        // wenn es schon eine Instanz gibt, dib diese zurück
-        // ansonsten erstelle eine Instanz, speicher sie ab und gib diese zurück
-        fun getInstance() =
-            instance ?: synchronized(this) {
-                instance ?: FirebaseAuthService().also { instance = it }
-            }
-    }
-
 
     private val TAG = "FirebaseAuthService"
 
     private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-
-    // Zustand der Authentifizierung -> Ist grade jmnd eingeloggt?
-    // StateFLow -> Kann für LiveUpdates collectet werden
     private val _authState = MutableStateFlow(firebaseAuth.currentUser)
     val authState: StateFlow<FirebaseUser?> = _authState
 
-    // Schaut was sich ändert (bei der Authentifizierung)
-    // Wenn sich was ändert bei FirebaseAuth, dann wird unser authState geupdatet
     private val authStateListener = FirebaseAuth.AuthStateListener { auth ->
         _authState.value = auth.currentUser
     }
 
     init {
-        // unseren listener zu firebaseAuth hinzufügen, dadurch ist er aktiv
         firebaseAuth.addAuthStateListener(authStateListener)
-
-        // Alternative: Listener in einem Schritt erstellen und "aktivieren"
-//        firebaseAuth.addAuthStateListener { auth ->
-//            _authState.value = auth.currentUser
-//        }
     }
 
-
-    fun register(email: String, password: String): Result<Unit> {
+    fun register(email: String, password: String, username: String): Result<Unit> {
         try {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener { authResult ->
+                    // user document in firestore anlegen, um den username zu speichern
+                    val docRef = firestore.collection("users").document(authResult.user!!.uid)
+                    docRef.set(
+                        User(
+                            id = authResult.user!!.uid,
+                            email = email,
+                            username = username
+                        )
+                    )
+                }
             return Result.success(Unit)
         } catch (e: Exception) {
             Log.e(TAG, "register: failed", e)
@@ -60,13 +48,13 @@ class FirebaseAuthService {
         }
     }
 
-    fun login(email: String, password: String) {
-        try {
-            firebaseAuth.signInWithEmailAndPassword(email, password)
+    suspend fun login(email: String, password: String): Result<Unit> {
+        return try {
+            firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            Result.success(Unit)
         } catch (e: Exception) {
             Log.e(TAG, "login: failed", e)
-            // TODO mehr Fehlerbehandlung, dem User eine passende Meldung anzeigen
-
+            Result.failure(e)
         }
     }
 

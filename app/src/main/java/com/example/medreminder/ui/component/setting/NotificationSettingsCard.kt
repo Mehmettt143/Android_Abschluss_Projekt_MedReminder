@@ -4,8 +4,11 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,15 +23,26 @@ import androidx.compose.ui.unit.dp
 import com.example.medreminder.R
 import com.example.medreminder.ui.component.HeaderItem
 import com.example.medreminder.ui.component.InfoTextItem
+import com.example.medreminder.ui.theme.SettingsScreenCardColor
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
-fun NotificationSettings(
-    currentNotificationTime: Int,
-    onTimeSelected: (Int) -> Unit,
+fun NotificationSettingsCard(
+    currentNotificationTime: String,
+    onTimeSelected: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-
+    //Benachrichtigungseinstellungen Karte
+    ElevatedCard(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = SettingsScreenCardColor
+        ),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
+    ) {
+        // Spalte für die Benachrichtigungseinstellungen
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
@@ -46,6 +60,7 @@ fun NotificationSettings(
                 HeaderItem(stringResource(R.string.label_for_notification), 20)
             }
 
+            //Informationstext
             InfoTextItem(
                 stringResource(R.string.infotext_for_notification),
                 16,
@@ -54,13 +69,20 @@ fun NotificationSettings(
             )
             Spacer(modifier = Modifier.padding(8.dp))
 
+            //Zeit vor Benachrichtigung auswählen
+            TimeBeforeNotificationSelector(
+                selectedTime = currentNotificationTime,//aktuell ""
+                onTimeSelected = onTimeSelected
+            )
         }
     }
-
+}
 
 @Preview(showBackground = true)
 @Composable
 private fun NotificationSettingCardPreview() {
-    // Use Theme here
-    // NotificationSettingCard()
+    NotificationSettingsCard(
+        currentNotificationTime = "30 Minuten",
+        onTimeSelected = {}
+    )
 }

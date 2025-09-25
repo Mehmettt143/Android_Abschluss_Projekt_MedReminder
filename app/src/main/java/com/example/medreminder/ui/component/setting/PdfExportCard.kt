@@ -31,15 +31,17 @@ fun PdfExportCard(
     onExportClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    //Karte für die PDF-Export-Option
     ElevatedCard(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(16.dp),
         colors = CardDefaults.elevatedCardColors(
             containerColor = SettingsScreenCardColor
         ),
         elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
     ) {
+        //Spalte für den Inhalt der Karte
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
@@ -48,8 +50,9 @@ fun PdfExportCard(
                 stringResource(R.string.infotext_export), 16, Color.Black, TextAlign.Center,
                 TextDecoration.Underline
             )
+            //Abstand allgemein
             Spacer(modifier.padding(16.dp))
-            // Export
+            // Export-Button
             Button(
                 onClick = onExportClicked,
                 modifier = Modifier.fillMaxWidth(),
@@ -58,11 +61,13 @@ fun PdfExportCard(
                 ),
                 shape = RoundedCornerShape(8.dp)
             ) {
+                //Export Icon
                 Icon(
                     painter = painterResource(R.drawable.export),
                     contentDescription = "pdf",
                     tint = Color.Unspecified,
                 )
+                //Export-Button Text
                 InfoTextItem(
                     stringResource(R.string.button_lable_export), 18, color = Color.White,
                     textAlign = TextAlign.Center
@@ -73,9 +78,12 @@ fun PdfExportCard(
     }
 }
 
+//Preview für die PDF-Export-Karte
 @Preview(showBackground = true)
 @Composable
 private fun PdfExportCardPreview() {
-    // Use Theme here
-    //PdfExportCard()
+    PdfExportCard(
+        onExportClicked = {},
+        modifier = Modifier.fillMaxWidth()
+    )
 }

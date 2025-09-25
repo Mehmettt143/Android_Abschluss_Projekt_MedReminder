@@ -1,46 +1,39 @@
 package com.example.medreminder.ui.viewmodel
 
+import android.content.Context
 import android.util.Patterns
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.medreminder.R
 import com.example.medreminder.data.remote.firebase.FirebaseAuthService
+import com.example.medreminder.data.repository.ApiDrugRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import kotlin.text.isBlank
 
 class AuthViewModel(
-//    private val authService: FirebaseAuthService // dependency injection mit koin - empfohlen
+    private val authService: FirebaseAuthService,
+    private val drugRepository: ApiDrugRepository
 ) : ViewModel() {
 
-    // auth
-    // nicht empofhlen - ohne dependency injection, mit eigenem singleton
-    private val authService: FirebaseAuthService = FirebaseAuthService.getInstance()
-
-    // Ausgangssituation: Flow<User?>
-    // Was wir haben möchten: Boolean
+    //Benutzer-Login-Status überwachen
     val isLoggedIn = authService.authState
-        .map { nullableUser ->
-            nullableUser != null
-            // kürzere schreibweise, gleiche logik
-//            if (nullableUser != null)
-//                true
-//            else
-//                false
-        }
+        .map { nullableUser -> nullableUser != null }
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(),
             initialValue = false
         )
 
-
-    // ui states
+    // UI-Status für Registrierungs- oder Login-Ansicht
     private val _showRegister = MutableStateFlow(false)
     val showRegister = _showRegister.asStateFlow()
 
+    //E-Mail Eingabe verwalten
     private val _emailInput = MutableStateFlow("")
     val emailInput = _emailInput.asStateFlow()
 
@@ -62,41 +55,82 @@ class AuthViewModel(
     private val _showPasswordRepeatHint = MutableStateFlow(false)
     val showPasswordRepeatHint = _showPasswordRepeatHint.asStateFlow()
 
+    //Fehler anzeigen, wenn Eingaben ungültig sind
+    private val _errorMessage = MutableStateFlow<String?>(null)
+    val errorMessage = _errorMessage.asStateFlow()
 
-    fun toggleShowRegister() {
-        _showRegister.value = !_showRegister.value
+    private val _username = MutableStateFlow("")
+    val username = _username.asStateFlow()
+
+    init {
+        // Authentifizierungsstatus überwachen und Benutzernamen abrufen
+        viewModelScope.launch {
+            authService.authState.collect { user ->
+                if (user != null) {
+                    // wenn User eingellogt ist wird der Username geholt
+                    fetchUsername()
+                } else {
+                    // Username wird auf leerer String gesetzt, wenn er/sie nicht eingeloggt ist
+                    _username.value = ""
+                }
+            }
+        }
     }
 
+    //Registrierungs- oder Login-Ansicht umschalten
+    fun toggleShowRegister() {
+        _showRegister.value = !_showRegister.value
+        resetShowHintStates()
+        _errorMessage.value = null
+    }
+
+    //E-Mail eingabe aktualisieren
     fun onEmailInputChange(value: String) {
         _emailInput.value = value
+        _showEmailHint.value = value.isBlank()
     }
 
     fun onPasswordInputChange(value: String) {
         _passwordInput.value = value
+        _showPasswordHint.value = value.isBlank()
     }
 
     fun onPasswordRepeatInputChange(value: String) {
         _passwordRepeatInput.value = value
+        _showPasswordRepeatHint.value = value.isBlank()
     }
 
     fun onUsernameInputChange(value: String) {
         _usernameInput.value = value
     }
 
-    fun loginOrRegister() {
-        val email = _emailInput.value
-        val password = _passwordInput.value
-        val passwordRepeat = _passwordRepeatInput.value
-        val username = _usernameInput.value
+    //Login- oder Registrierung durchführen
+    fun loginOrRegister(context: Context) {
+        viewModelScope.launch {
+            val email = _emailInput.value
+            val password = _passwordInput.value
+            val passwordRepeat = _passwordRepeatInput.value
+            val username = _usernameInput.value
 
-        if (_showRegister.value) {
-            // register
-            // TODO input validation
-            // TODO error handling
-            authService.register(email, password)
-        } else {
-            // login
-            authService.login(email, password)
+            if (!validateRegisterInputs(email, password, passwordRepeat, username, context)) {
+                return@launch
+            }
+
+            val result = if (_showRegister.value) {
+                authService.register(email, password, username)
+            } else {
+                authService.login(email, password)
+            }
+
+            result.onSuccess {
+                // Başarılı login/register sonrası inputs'u temizle
+                resetInputs()
+                _errorMessage.value = null
+                // Username otomatik olarak auth state değişimi ile güncellenecek
+            }.onFailure { e ->
+                _errorMessage.value =
+                    e.message ?: context.getString(R.string.error_operation_failed)
+            }
         }
     }
 
@@ -104,31 +138,29 @@ class AuthViewModel(
         email: String,
         password: String,
         passwordRepeat: String,
-        username: String
+        username: String,
+        context: Context
     ): Boolean {
-
         resetShowHintStates()
+        _errorMessage.value = null
 
         var isValid = true
 
-        // wenn email leer ist oder kein gültiges email pattern hat dann zeigen wir dem nutzer einen hinweis an
         if (email.isBlank() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             _showEmailHint.value = true
+            _errorMessage.value = context.getString(R.string.error_invalid_email)
             isValid = false
         }
-        // wenn das password leer ist oder kürzer als 6 zeichen zeigen wir dem nutzer einen hinweis an
         if (password.isBlank() || password.length < 6) {
             _showPasswordHint.value = true
+            _errorMessage.value = context.getString(R.string.error_password_length)
             isValid = false
         }
-
-        // wenn das wiederholte password nicht gleich ist dann zeigen wir dem nutzer einen hinweis an
-        if (passwordRepeat != password) {
+        if (_showRegister.value && passwordRepeat != password) {
             _showPasswordRepeatHint.value = true
+            _errorMessage.value = context.getString(R.string.error_password_mismatch)
             isValid = false
         }
-
-        // TODO validate username
 
         return isValid
     }
@@ -143,7 +175,38 @@ class AuthViewModel(
         _emailInput.value = ""
         _passwordInput.value = ""
         _passwordRepeatInput.value = ""
+        _usernameInput.value = ""
     }
 
+    fun logout() {
+        viewModelScope.launch {
+            try {
+                authService.logout()
+                resetInputs()
+                resetShowHintStates()
+                _errorMessage.value = null
+                _username.value = ""
+            } catch (e: Exception) {
+                _errorMessage.value = e.message ?: "" //R.string.logout_failed.toString()
+            }
+        }
+    }
 
+    private fun fetchUsername() {
+        viewModelScope.launch {
+            try {
+                val result = drugRepository.getUsername()
+                if (result.isSuccess) {
+                    _username.value = result.getOrNull() ?: ""
+                } else {
+                    _errorMessage.value = result.exceptionOrNull()?.message
+                        ?: "" //R.string.username_load_failed.toString()
+                    _username.value = ""
+                }
+            } catch (e: Exception) {
+                _errorMessage.value = e.message ?: "" // R.string.username_load_error.toString()
+                _username.value = ""
+            }
+        }
+    }
 }

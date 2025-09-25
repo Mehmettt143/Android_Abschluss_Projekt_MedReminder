@@ -1,8 +1,6 @@
 package com.example.medreminder.ui
 
 import android.annotation.SuppressLint
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -20,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -38,22 +35,25 @@ import com.example.medreminder.ui.screen.HomeScreen
 import com.example.medreminder.ui.screen.SettingsScreen
 import com.example.medreminder.ui.theme.BottombarBlue
 import com.example.medreminder.ui.viewmodel.AuthViewModel
-import com.example.medreminder.ui.viewmodel.DetailViewModel
+import org.koin.androidx.compose.koinViewModel
 
-@RequiresApi(Build.VERSION_CODES.O)
+
 @SuppressLint("ResourceAsColor")
 @Composable
 fun AppStart(
-    authViewModel: AuthViewModel = viewModel()
+    authViewModel: AuthViewModel = koinViewModel(),
 ) {
     val navController = rememberNavController()
     var selectedTabItem by remember { mutableStateOf(NavigationItem.Home) }
 
+    //Prüft ob der Benutzer eingeloggt ist
     val isLoggedIn by authViewModel.isLoggedIn.collectAsState()
 
     if (!isLoggedIn) {
+        //zeigt den Loginscreen wen der Benutzer noch nicht eingeloggt ist
         AuthScreen()
     } else {
+        //hier wird alles erstellt und die Homescreen wird angezeigt
         Scaffold(
             bottomBar = {
                 NavigationBar(
@@ -86,30 +86,35 @@ fun AppStart(
                     }
                 }
             }
-        ) { paddingValues ->
+        ) { innerPadding ->
+            //Navigationshost:  die Verwaltung der Bildschirmnavigation
             NavHost(
                 navController = navController,
-                startDestination = HomeScreenRoute,
-                modifier = Modifier.padding(paddingValues)
+                startDestination = selectedTabItem.route,
+                modifier = Modifier.padding(innerPadding)
             ) {
                 composable<HomeScreenRoute> {
                     HomeScreen(
-                        navController = navController,
-
-                        )
+                        navController = navController
+                    )
                 }
                 composable<FavoriteScreenRoute> {
-                    FavoriteScreen()
+                    //Favoritenbildschirm mit Funktion zum Entfernen und Navigieren
+                    FavoriteScreen(
+                        navController = navController
+                    )
                 }
                 composable<AddScreenRoute> {
+                    //Bildschirm zum Hinzufügen neuer Medikamente
                     DrugAddScreen()
                 }
                 composable<SettingsScreenRoute> {
+                    //Settingsscreen: Export und Notification und Logout
                     SettingsScreen()
                 }
                 composable<DetailScreenRoute> {
+                    //Detailscreen für ein spezifisches Medikament
                     DetailScreen(
-                        viewModel = DetailViewModel(it.savedStateHandle),
                         navController = navController
                     )
                 }

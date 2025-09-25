@@ -24,24 +24,28 @@ import androidx.compose.ui.unit.sp
 fun AuthInfoText(
     text: String,
     fontSize: Int,
-    color: Color
+    color: Color,
+    modifier: Modifier = Modifier
 ) {
+    //Zeile für den Informationstext und den Icon
     Row(
         modifier = Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        //Informationstext
         Text(
             text = text,
             color = color,
             fontSize = fontSize.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier
+            modifier = modifier
                 .weight(1f)
                 .padding(top = 8.dp)
         )
+        //check-icon
         Icon(
             imageVector = Icons.Default.CheckCircle,
             contentDescription = "check",
@@ -54,10 +58,15 @@ fun AuthInfoText(
     }
 }
 
-
+//Preview für den Informationstext
 @Preview(showBackground = true)
 @Composable
 private fun InfoSectionPreview() {
-
+    AuthInfoText(
+        text = "Mindestens 8 Zeichen erforderlich",
+        fontSize = 16,
+        color = Color.Black,
+        modifier = Modifier.fillMaxWidth()
+    )
 }
 

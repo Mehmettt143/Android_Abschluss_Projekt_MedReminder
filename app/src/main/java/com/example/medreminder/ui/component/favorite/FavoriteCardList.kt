@@ -7,25 +7,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.medreminder.data.local.Drug
-
+import com.example.medreminder.data.remote.drugapi.model.DisplayDrug
 
 @Composable
 fun FavoriteCardList(
-    drugs: List<Drug>,
-    favorites: List<Drug>,
+    drugs: List<DisplayDrug>,
     modifier: Modifier = Modifier,
-    onFavoriteClick: (Drug) -> Unit,
+    onRemoveFavorite: (DisplayDrug) -> Unit,
+    onNavigateToDetail: (DisplayDrug) -> Unit // Yeni navigasyon callback'i
 ) {
+    //Lazycolumn für die Liste der favorisierten Medikamente
     LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(8.dp)
     ) {
-        items (drugs) { drug ->
+        items(drugs) { drug ->
+            //Elemente der drugs liste
             FavoriteCard(
                 drug = drug,
-                isFavorite = favorites.any { it.id == drug.id },
-                onFavoriteClick = onFavoriteClick
+                onFavoriteClick = onRemoveFavorite,
+                onNavigateToDetail = onNavigateToDetail // Callback
             )
         }
     }
@@ -34,6 +35,5 @@ fun FavoriteCardList(
 @Preview(showBackground = true)
 @Composable
 private fun DrugListPreview() {
-    // Use Theme here
-   // DrugList()
+    //Preview für die Favoritenliste
 }

@@ -20,7 +20,6 @@ interface DrugAPIService {
     ): DrugLabelResponse
 }
 
-
 object DrugApi {
     const val BASE_URL = "https://api.fda.gov/"
 
@@ -28,21 +27,17 @@ object DrugApi {
 
         level = HttpLoggingInterceptor.Level.BODY
     }
-
     private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(loggingInterceptor)
         .build()
-
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-
     private val retrofit = Retrofit.Builder()
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .baseUrl(BASE_URL)
         .client(okHttpClient)
         .build()
-
     val retrofitService: DrugAPIService by lazy { retrofit.create(DrugAPIService::class.java) }
 
 }

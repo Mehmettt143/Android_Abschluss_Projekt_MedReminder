@@ -30,8 +30,8 @@ fun TimeOfDaySelector(
         stringResource(R.string.label_afternoon)
     )
 ) {
+    //Spalte für den Tageszeitwähler
     Column(modifier = modifier) {
-      //Titel
         Text(
             text = title,
             color = BottombarBlue,
@@ -40,11 +40,12 @@ fun TimeOfDaySelector(
             modifier = Modifier.padding(bottom = 8.dp, start = 8.dp)
         )
 
-        // Buttons
+        //Zeile für die Auswahlbuttons
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
+            //für jeden Option einen Button erstellen
             options.forEach { option ->
                 TimeOptionButton(
                     text = option,
@@ -58,7 +59,7 @@ fun TimeOfDaySelector(
 }
 
 
-// Preview
+// Preview für den Tageszeitwähler
 @Preview(showBackground = true)
 @Composable
 private fun TimeOfDaySelectorPreview() {

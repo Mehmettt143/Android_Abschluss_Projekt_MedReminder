@@ -8,37 +8,47 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
 @Composable
- fun TimeInput(
+fun TimeInput(
     value: String,
     onValueChange: (String) -> Unit,
     label: String,
     placeholder: String,
     modifier: Modifier = Modifier
 ) {
+    //Umrandetes Textfeld für nummerische Zeiteingabe (Stunden oder Minuten)
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
         placeholder = { Text(placeholder) },
         modifier = modifier,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Number,
+            imeAction = ImeAction.Done,
+        ),//Nur nummerische Eingabe
         singleLine = true,
-        textStyle =TextStyle(
+        textStyle = TextStyle(
             textAlign = TextAlign.Center,
             fontSize = 16.sp
         )
     )
 }
 
+//Preview für das Zeiteingabefeld
 @Preview(showBackground = true)
 @Composable
 private fun TimeInputPreview() {
-    // Use Theme here
-    //TimeInput()
+    TimeInput(
+        value = "08",
+        onValueChange = {},
+        label = "Saat",
+        placeholder = "08"
+    )
 }

@@ -14,8 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.medreminder.ui.theme.BottombarBlue
 import com.example.medreminder.ui.theme.DisabledSaveDrugColor
-import com.example.medreminder.ui.theme.TimeOptionColorFalse
-import com.example.medreminder.ui.theme.TimeOptionColorTrue
 
 @Composable
 fun TimeOptionButton(
@@ -24,21 +22,25 @@ fun TimeOptionButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    //Button für die Auswahl einer Tageszeit
     Button(
         onClick = onClick,
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp),
         colors = if (isSelected) {
+            //Blau für ausgewählten Zustand
             ButtonDefaults.buttonColors(BottombarBlue)
         } else {
+            //Zustand bei nicht selektiert andere Farbe
             ButtonDefaults.buttonColors(DisabledSaveDrugColor)
         }
     ) {
+        //Text im Button
         Text(
             text = text,
             color = if (isSelected) Color.White else Color.Black,
-            fontSize = 12.sp,
+            fontSize = 10.sp,
             fontWeight = FontWeight.Bold
         )
     }
@@ -47,6 +49,10 @@ fun TimeOptionButton(
 @Preview(showBackground = true)
 @Composable
 private fun TimeOptionButtonPreview() {
-    // Use Theme here
-    // TimeOptionButton()
+    //Preview für den Zeitoptions-Button
+    TimeOptionButton(
+        text = "Morgens",
+        isSelected = true,
+        onClick = {}
+    )
 }

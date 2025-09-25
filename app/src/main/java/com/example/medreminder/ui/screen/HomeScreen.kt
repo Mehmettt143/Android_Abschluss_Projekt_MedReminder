@@ -1,11 +1,16 @@
 package com.example.medreminder.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +29,9 @@ import com.example.medreminder.navigation.DetailScreenRoute
 import com.example.medreminder.ui.component.HeaderItem
 import com.example.medreminder.ui.component.home.DrugSearchBar
 import com.example.medreminder.ui.component.home.DrugsList
+import com.example.medreminder.ui.component.home.MyDrugsList
+import com.example.medreminder.ui.theme.LogoutIconColor
+import com.example.medreminder.ui.viewmodel.AuthViewModel
 import com.example.medreminder.ui.viewmodel.HomeViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -31,8 +39,10 @@ import org.koin.androidx.compose.koinViewModel
 fun HomeScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = koinViewModel(),
-    navController: NavController
+    navController: NavController,
+    authViewModel: AuthViewModel = koinViewModel()
 ) {
+    //Layout des Homescreens
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -44,10 +54,34 @@ fun HomeScreen(
         val searchQuery = viewModel.searchQuery.collectAsState("")
         val searchResults = viewModel.searchResults.collectAsState(emptyList())
         val favoriteDrugs = viewModel.favoriteDrugs.collectAsState(emptyList())
+        val myDrugs = viewModel.myDrugs.collectAsState(emptyList())
+        val username = authViewModel.username.collectAsState("")
 
-        HeaderItem(stringResource(R.string.label_medreminder))
+
+        //Titel und Logoutbutton
+        Box(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+
+            HeaderItem(
+                stringResource(R.string.label_medreminder),
+
+                )
 
 
+            IconButton(
+                onClick = { authViewModel.logout() },
+                modifier = Modifier.align(Alignment.CenterEnd)
+            ) {
+                Icon(
+                    Icons.Filled.Logout,
+                    contentDescription = "Logout",
+                    tint = LogoutIconColor
+                )
+            }
+        }
+
+        //Aktuelles Datum anzeigen
         Text(
             text = stringResource(R.string.label_date_of_today, date.value),
             style = MaterialTheme.typography.bodyLarge,
@@ -55,14 +89,14 @@ fun HomeScreen(
             textAlign = TextAlign.Center
         )
 
-
+        //Suchleiste für Medikamente
         DrugSearchBar(
             searchQuery = searchQuery.value,
             onSearchQueryChange = { viewModel.updateSearchQuery(it) },
             modifier = Modifier.padding(horizontal = 16.dp)
         )
 
-
+        //Suchergebnisse anzeigen
         if (searchResults.value.isNotEmpty()) {
             DrugsList(
                 drugs = searchResults.value,
@@ -73,7 +107,7 @@ fun HomeScreen(
                 onNavigateToDetail = { drug ->
                     navController.navigate(DetailScreenRoute(drugId = drug.id))
                 },
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.weight(0.5f)
             )
         } else if (searchQuery.value.isNotEmpty()) {
             // keine Medikament gefunden
@@ -84,8 +118,8 @@ fun HomeScreen(
                 modifier = Modifier.padding(32.dp)
             )
         }
-
-        HeaderItem(stringResource(R.string.my_drugs))
+        //Benutzerdefinierte Medikamente anzeigen
+        HeaderItem(stringResource(R.string.my_drugs, username.value))
 
         Icon(
             painter = painterResource(R.drawable.drug),
@@ -93,6 +127,15 @@ fun HomeScreen(
             modifier = Modifier.size(84.dp),
             tint = Color.Unspecified
         )
+        MyDrugsList(
+            modifier = Modifier.weight(0.5f),
+            myDrugs = myDrugs.value,
+            onRemoveClick = { drug ->
+                viewModel.removeDrug(drug.id)
+            }
+        )
+
+
     }
 }
 
