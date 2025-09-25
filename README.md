@@ -3,12 +3,12 @@
 Eine Android-App zur Medikamentenverwaltung mit intelligenter Erinnerungsfunktion.
 
 Was ist MedReminder?
-MedReminder hilft Nutzern dabei, ihre Medikamenteneinnahme zu organisieren und nie wieder eine Dosis zu vergessen. Die App bietet Zugriff auf offizielle FDA-Datenbanken und ermöglicht eine sichere, lokale Verwaltung persönlicher Medikationspläne.
+MedReminder hilft Nutzern dabei, ihre Medikamenteneinnahme zu organisieren und nie wieder eine Dosis zu vergessen. Die App bietet Zugriff auf offizielle FDA-Datenbanken und ermöglicht eine sichere Verwaltung persönlicher Medikamenteneinnahme.
 
 ## Zielgruppe
 
 Patienten mit regelmäßiger Medikation
-Senioren, die Unterstützung bei der Medikamentenorganisation benötigen
+Senioren, die Unterstützung bei der Medikamentenorganisation benötigen.
 Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 
 ## Design
@@ -25,10 +25,11 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 
 ###  Screens:
 - [ ]  AuthScreen (Login&Registration)
-- [ ]  HomeScreen (Search)
+- [ ]  HomeScreen (Search & Einnahme-Erinnerungen als Cardlayout)
 - [ ]  FavoriteScreen (Favoriten)
+- [ ]  AddScreen (Einnahme-Erinnerungen erstellen)
 - [ ]  SettingsScreen (Export und Notification)
-- [ ]  AddScreen
+
 
 ###  Features
 - [ ]  Medikamentensuche über FDA-Datenbank
@@ -45,7 +46,7 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten
 ### 📁 Ordnerstruktur
 ```
 data/
-   local/        #  Room Database
+   remote/       #  firebase firestore
    remote/       #  OpenFDA API
    repository/   #  Repository Implementation
 di/              #  Dependency Injection
@@ -63,7 +64,7 @@ MainActivity.kt
 ## 💾 Datenspeicherung
 
 ### Firestore:
-- Speichert Favoriten und Erinnerungen lokal für Offline-Nutzung.
+- Speichert Favoriten und Erinnerungen remote in Firestore.
 
 ## 🌐 API Calls
 
@@ -77,11 +78,11 @@ MainActivity.kt
 ## 📚 3rd-Party Frameworks
 
 -  Jetpack Compose (UI)
--  Room (lokale Datenbank)
+-  firebase (remote Speicherung)
 -  Moshi (JSON Converter - API Daten in Kotlin Objects)
 -  Retrofit (API Calls)
 -  Dependency Injection
--  Notification** (Benachrichtigung)
+
 
 
 
@@ -89,3 +90,4 @@ MainActivity.kt
 
 - [ ]  Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf Deutsch übersetzt werden mit Hilfe einer API
 - [ ]  Die Favoritenliste oder auch Medikamentenliste könnten als PDF exportiert werden
+- [ ]  Notification (Benachrichtigung für Medikamenten-Einnahme)
