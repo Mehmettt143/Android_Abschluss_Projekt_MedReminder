@@ -7,7 +7,9 @@ import com.example.medreminder.data.remote.firebase.FirebaseAuthService
 import com.example.medreminder.data.remote.firebase.model.Drug
 import com.example.medreminder.data.remote.firebase.model.DrugReminder
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import kotlinx.coroutines.tasks.await
+
 
 class ApiDrugRepository(
     private val drugApi: DrugAPIService,
@@ -144,21 +146,29 @@ class ApiDrugRepository(
     //
     //alle Favoriten Drugs werden geholt durch user Id favoriten collection wird in Drug Klasse umgewandelt
     //und in die druglist übertragen dann alls Result list drug returned
+
     override suspend fun getAllFavorites(): Result<List<Drug>> {
-        return try {
-            authService.authState.value?.uid?.let { userId ->
+        val currentUser = authService.authState.value
+        return if (currentUser != null) {
+            try {
                 val drugList = firestore
                     .collection("users")
-                    .document(userId)
+                    .document(currentUser.uid)
                     .collection("favorites")
                     .get()
                     .await()
                     .toObjects(Drug::class.java)
                 Result.success(drugList)
-            } ?: Result.failure(Exception("User not logged in"))
-        } catch (e: Exception) {
-            Log.e(TAG, "getAllFavorites: failed", e)
-            Result.failure(Exception("Favorites failed", e))
+            } catch (e: FirebaseFirestoreException) {
+                val errorMessage = when (e.code) {
+                    FirebaseFirestoreException.Code.PERMISSION_DENIED -> "Permission denied"
+                    FirebaseFirestoreException.Code.UNAVAILABLE -> "Network error"
+                    else -> "Failed to fetch favorites"
+                }
+                Result.failure(Exception(errorMessage, e))
+            }
+        } else {
+            Result.failure(Exception("User not logged in"))
         }
     }
 
