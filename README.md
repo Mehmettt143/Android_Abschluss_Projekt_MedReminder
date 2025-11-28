@@ -53,18 +53,18 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten.
 ### 📁 Ordnerstruktur
 ```
 data/
-   remote/       #  firebase firestore database
-   remote/       #  OpenFDA API
-   repository/   #  Repository Implementation
-di/              #  Dependency Injection
-navigation/      #  Navigation
+   remote/        firebase firestore database
+   remote/        OpenFDA API
+   repository/    Repository Implementation
+di/               Dependency Injection
+navigation/       Navigation
 ui/
-   components/   #  Fertige Components zur Benutzung in den Screens
-   screens/      #  Compose Screens
-   theme/        #  Color, Theme und Type
-   viewmodel/    #  ViewModels
+   components/    Fertige Components zur Benutzung in den Screens
+   screens/       Compose Screens
+   theme/         Color, Theme und Type
+   viewmodel/     ViewModels
    AppStart
-utils/           #  Helperclasses
+utils/            Helperclasses
 MainActivity.kt
 ```
 
