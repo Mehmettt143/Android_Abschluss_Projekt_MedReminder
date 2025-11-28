@@ -71,7 +71,7 @@ MainActivity.kt
 ## 💾 Datenspeicherung
 
 ### Firestore:
-- Speichert Favoriten und Erinnerungen remote in Firestore-database.
+- Speichert Favoriten und Erinnerungen remote in Firestore-database.(Zurzeit Testversion Firebase abgelaufen)
 
 ## 🌐 API Calls
 
