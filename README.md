@@ -32,17 +32,17 @@ Alle, die ihre Gesundheit bezüglich Medikation verwalten möchten.
 
 
 ###  Screens:
-- [ ]  AuthScreen (Login&Registration)
-- [ ]  HomeScreen (Search & Einnahme-Erinnerungen + Logout-Icon)
-- [ ]  FavoriteScreen (Favoriten)
-- [ ]  AddScreen (Einnahme-Erinnerungen erstellen)
-- [ ]  SettingsScreen (Export und Notification + Logout)
+-   AuthScreen (Login&Registration)
+-   HomeScreen (Search & Einnahme-Erinnerungen + Logout-Icon)
+-   FavoriteScreen (Favoriten)
+-   AddScreen (Einnahme-Erinnerungen erstellen)
+-   SettingsScreen (Export und Notification + Logout)
 
 
 ###  Features
-- [ ]  Medikamentensuche über FDA-Datenbank
-- [ ]  Medikamente zu Favoriten hinzufügen + Details zeigen (Nebenwirkungen,Dosierung..)
-- [ ]  Einnahme-Erinnerungen erstellen & löschen
+-   Medikamentensuche über FDA-Datenbank
+-   Medikamente zu Favoriten hinzufügen + Details zeigen (Nebenwirkungen,Dosierung..)
+-   Einnahme-Erinnerungen erstellen & löschen
 
 
 
@@ -95,7 +95,7 @@ MainActivity.kt
 
 ## 🚀 Ausblick
 
-- [ ]  Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf           Deutsch übersetzt werden mit Hilfe einer API
-- [ ]  Die Favoritenliste oder auch Medikamentenliste könnte als PDF exportiert werden
-- [ ]  Notification (Benachrichtigung für Medikamenten-Einnahme)
+-   Die Medikamenteninformationen sind in englischer Sprache - könnten eventuell auf           Deutsch übersetzt werden mit Hilfe einer API
+-   Die Favoritenliste oder auch Medikamentenliste könnte als PDF exportiert werden
+-   Notification (Benachrichtigung für Medikamenten-Einnahme)
 
